@@ -35,9 +35,3 @@ test:
   stage: test
   script: 
     - yarn test
-
-cleanup_job:
-  stage: cleanup
-  script:
-    - yarn cleanup-repository after jobs
-  when: always
