@@ -107,25 +107,6 @@ export default function Home({ initialData }) {
                 </h3>
               </div>
             ))}
-            <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
-            {workHistory.items.map((experience) => (
-              <div className="mb-4">
-                <h1 className="text-2xl font-bold">
-                  {experience.website ? (
-                    <a
-                      href={experience.website}
-                      className="text-blue-900 dark:text-blue-500"
-                      target="_blank"
-                    >
-                      {experience.company}
-                    </a>
-                  ) : (
-                    experience.company
-                  )}
-                </h1>
-                <p>{experience.description}</p>
-              </div>
-            ))}
           </div>
           <div className="col-span-4 md:col-span-1 md:order-1">
             <h2 className="text-base font-bold mb-4">
@@ -149,15 +130,6 @@ export default function Home({ initialData }) {
                   {/* <span className="col-span-4">{hustle.description}</span> */}
                 </div>
               </a>
-            ))}
-            <h2 className="text-base font-bold mb-4 mt-14">Skills</h2>
-            {skills.items.map((skill) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-3 font-bold text-2xl">
-                  {skill.name}
-                </span>
-                <span className="col-span-1">{skill.yearsOfExperience}</span>
-              </div>
             ))}
           </div>
         </div>

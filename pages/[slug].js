@@ -5,6 +5,10 @@ import { format } from "fecha";
 
 import { fetcher } from "../lib/graphqlUtils";
 
+import unified from "unified";
+import parse from "remark-parse";
+import remark2react from "remark-react";
+
 export const POST_QUERY = gql`
   query post($slug: String) {
     blogPostCollection(where: { slug: $slug }) {
@@ -25,7 +29,10 @@ export const POST_QUERY = gql`
 
 export default function Page({ initialData }) {
   const { blogPostCollection } = initialData;
-
+  const body = unified()
+    .use(parse)
+    .use(remark2react)
+    .processSync(blogPostCollection.items[0].body).result;
   return (
     <>
       <Head>
@@ -80,12 +87,7 @@ export default function Page({ initialData }) {
                   )}
               </span>
             </div>
-            <div
-              className="contents text-xl leading-relaxed"
-              dangerouslySetInnerHTML={{
-                __html: blogPostCollection.items[0].body,
-              }}
-            ></div>
+            <div className="contents text-xl leading-relaxed">{body}</div>
             {/* {posts.items.map((post) => (
               <div className="mb-2">
                 <h3 className="text-2xl font-bold">
