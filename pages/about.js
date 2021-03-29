@@ -108,7 +108,7 @@ export default function Home({ initialData }) {
             ))}
             <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => (
-              <div className="mb-2">
+              <div className="mb-4">
                 <h1 className="text-2xl font-bold">
                   {experience.website ? (
                     <a
