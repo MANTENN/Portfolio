@@ -2,6 +2,10 @@ import Head from "next/head";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
+import unified from "unified";
+import parse from "remark-parse";
+import remark2react from "remark-react";
+
 import { fetcher } from "../lib/graphqlUtils";
 
 export const PORTFOLIO_QUERY = gql`
@@ -123,7 +127,15 @@ export default function Home({ initialData }) {
                     experience.company
                   )}
                 </h1>
-                <p>{experience.description}</p>
+                <p>
+                  {" "}
+                  {
+                    unified()
+                      .use(parse)
+                      .use(remark2react)
+                      .processSync(experience.description).result
+                  }
+                </p>
               </div>
             ))}
           </div>
