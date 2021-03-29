@@ -1,65 +1,149 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
 
-export default function Home() {
+import { fetcher } from "../lib/graphqlUtils";
+
+export const PORTFOLIO_QUERY = gql`
+  query Portfolio {
+    blogPostCollection {
+      items {
+        title
+        slug
+        publishDate
+      }
+    }
+    workHistoryCollection {
+      items {
+        company
+        startDate
+        endDate
+        website
+        position {
+          name
+        }
+        description
+      }
+    }
+    skillCollection {
+      items {
+        name
+        confidence
+        yearsOfExperience
+      }
+      total
+    }
+    projectCollection {
+      items {
+        name
+        heroImageCollection {
+          items {
+            title
+            description
+            url
+          }
+          total
+        }
+        description
+      }
+      total
+    }
+  }
+`;
+
+export default function Home({ initialData }) {
+  // const { loading, error, data = {} } = useQuery(PORTFOLIO_QUERY);
+  const {
+    blogPostCollection: posts = { items: [], total: 0 },
+    skillCollection: skills = { items: [], total: 0 },
+    projectCollection: projects = { items: [], total: 0 },
+    workHistoryCollection: workHistory = { items: [], total: 0 },
+  } = initialData;
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Nazar Maksymchuk - Entreprenuer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <header className="container mx-auto block py-4 grid grid-cols-5 gap-4">
+        <h1 className="block col-span-5 md:col-span-1 text-2xl font-bold cursor-pointer">
+          <Link href="/">
+            <a className="hover:bg-yellow-200">Nazar Maksymchuk</a>
+          </Link>
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="col-span-3">Links</div>
+        <div className="col-span-1 text-right">GITHUB</div>
+      </header>
+      <div className="container mx-auto mb-20">
+        <div className="row grid grid-cols-4 gap-4">
+          <div className="col-span-4 md:col-span-1">
+            <h2 className="text-xl font-bold mb-4">Hustles</h2>
+            {projects.items.map((hustle) => (
+              <div className="row grid grid-cols-4 gap-4 mb-2">
+                <span className="col-span-4 text-2xl font-bold">
+                  {hustle.name}
+                </span>
+                <span className="col-span-4">{"<Image /> here"}</span>
+                <span className="col-span-4">{hustle.description}</span>
+              </div>
+            ))}
+            <h2 className="text-base font-bold mb-4">Skills</h2>
+            {skills.items.map((skill) => (
+              <div className="row grid grid-cols-4 gap-4 mb-2">
+                <span className="col-span-3 text-xl">{skill.name}</span>
+                <span className="col-span-1">{skill.yearsOfExperience}</span>
+              </div>
+            ))}
+          </div>
+          <div className="col-span-4 md:col-span-3">
+            <h2 className="text-xl font-bold mb-3">
+              Posts<span className="text-base"> | Articles</span>
+            </h2>
+            {posts.items.map((post) => (
+              <div className="mb-2">
+                <h3 className="text-2xl font-bold">
+                  <Link href={post.slug}>
+                    <a className="hover:bg-yellow-200">{post.title}</a>
+                  </Link>
+                </h3>
+              </div>
+            ))}
+            <h2 className="mt-4 text-xl font-bold mb-3">Work History</h2>
+            {workHistory.items.map((skill) => (
+              <div className="mb-2">
+                <h1 className="text-2xl font-bold">
+                  {skill.website ? (
+                    <a
+                      href={skill.website}
+                      className="text-blue-900"
+                      target="_blank"
+                    >
+                      {skill.company}
+                    </a>
+                  ) : (
+                    skill.company
+                  )}
+                </h1>
+                <p>{skill.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </div>
+    </>
+  );
+}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+export async function getStaticProps() {
+  const data = await fetcher(PORTFOLIO_QUERY);
+
+  // when no typee of page is not found return 404 page
+  return {
+    props: {
+      initialData: data,
+    },
+    revalidate: 60,
+  };
 }
