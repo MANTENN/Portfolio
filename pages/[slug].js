@@ -51,7 +51,7 @@ export default function Page({ initialData }) {
       </header>
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4">
-          <div className="col-span-4 md:col-span-1">
+          <div className="col-span-4 lg:col-span-1">
             {/* <h2 className="text-xl font-bold mb-4">Hustles</h2>
             {projects.items.map((skill) => (
               <div className="row grid grid-cols-4 gap-4 mb-2">
@@ -69,7 +69,7 @@ export default function Page({ initialData }) {
               </div>
             ))} */}
           </div>
-          <div className="col-span-4 md:col-span-2">
+          <div className="col-span-4 lg:col-span-2">
             <h2 className="text-4xl font-bold mb-3">
               {blogPostCollection.items[0].title}
             </h2>
@@ -116,7 +116,7 @@ export default function Page({ initialData }) {
               </div>
             ))} */}
           </div>
-          <div className="col-span-4 md:col-span-1">
+          <div className="col-span-4 lg:col-span-1">
             {/* <h2 className="text-xl font-bold mb-4">Hustles</h2>
             {projects.items.map((skill) => (
               <div className="row grid grid-cols-4 gap-4 mb-2">
