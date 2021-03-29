@@ -33,7 +33,7 @@ export const PORTFOLIO_QUERY = gql`
       }
       total
     }
-    projectCollection {
+    projectCollection(where: { workType_contains_all: ["hustle"] }) {
       items {
         name
         heroImageCollection {
@@ -44,6 +44,7 @@ export const PORTFOLIO_QUERY = gql`
           }
           total
         }
+        link
         description
       }
       total
@@ -108,7 +109,7 @@ export default function Home({ initialData }) {
             ))}
             <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => (
-              <div className="mb-2">
+              <div className="mb-4">
                 <h1 className="text-2xl font-bold">
                   {experience.website ? (
                     <a
@@ -131,15 +132,23 @@ export default function Home({ initialData }) {
               Hustles | Side Projects
             </h2>
             {projects.items.map((hustle) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-4 text-2xl font-bold">
-                  <span className="hover:bg-yellow-200  dark:hover:text-black">
-                    {hustle.name}
+              <a
+                target="_blank"
+                href={
+                  hustle.link +
+                  "?utm_source=nmaksymchuk.com&utm_medium=projects"
+                }
+              >
+                <div className="row grid grid-cols-4 gap-4 mb-2">
+                  <span className="col-span-4 text-2xl font-bold">
+                    <span className="hover:bg-yellow-200  dark:hover:text-black">
+                      {hustle.name}
+                    </span>
                   </span>
-                </span>
-                {/* <span className="col-span-4">{"<Image /> here"}</span> */}
-                {/* <span className="col-span-4">{hustle.description}</span> */}
-              </div>
+                  {/* <span className="col-span-4">{"<Image /> here"}</span> */}
+                  {/* <span className="col-span-4">{hustle.description}</span> */}
+                </div>
+              </a>
             ))}
             <h2 className="text-base font-bold mb-4 mt-14">Skills</h2>
             {skills.items.map((skill) => (
