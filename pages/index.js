@@ -161,7 +161,7 @@ export default function Home({ initialData }) {
                 </div>
               </a>
             ))}
-            <h2 className="text-base font-bold mb-4 mt-14">Skills</h2>
+            <h2 className="text-base font-bold mb-4 mt-14">Technologies</h2>
             {skills.items.map((skill) => (
               <div className="row grid grid-cols-4 gap-4 mb-2">
                 <span className="col-span-3 font-bold text-2xl">
