@@ -165,5 +165,5 @@ export async function getStaticPaths() {
   const data = await fetcher(POSTS);
   const paths = data.blogPostCollection.items.map(({ slug }) => "/" + slug);
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
