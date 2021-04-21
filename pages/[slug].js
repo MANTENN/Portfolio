@@ -8,6 +8,8 @@ import { fetcher } from "../lib/graphqlUtils";
 import unified from "unified";
 import parse from "remark-parse";
 import remark2react from "remark-react";
+import { Header } from "../components/header";
+import { ChevronLeft } from "react-feather";
 
 export const POST_QUERY = gql`
   query post($slug: String) {
@@ -27,11 +29,17 @@ export const POST_QUERY = gql`
   }
 `;
 
+const Paragraph = ({ children }) => <p className="mb-2">{children}</p>;
+
 export default function Page({ initialData }) {
-  const { blogPostCollection } = initialData;
+  const { blogPostCollection } = initialData || {
+    blogPostCollection: {
+      items: [{ title: "", publishDate: new Date(), body: "" }],
+    },
+  };
   const body = unified()
     .use(parse)
-    .use(remark2react)
+    .use(remark2react, { remarkReactComponents: { p: Paragraph } })
     .processSync(blogPostCollection.items[0].body).result;
   return (
     <>
@@ -40,40 +48,16 @@ export default function Page({ initialData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="container mx-auto block py-4 grid grid-cols-4 gap-4">
-        <h1 className="inline col-span-5 md:col-span-1 text-2xl font-bold">
-          <Link href="/">
-            <a className="hover:bg-yellow-200 dark:hover:text-black cursor-pointer">
-              Nazar Maksymchuk
-            </a>
-          </Link>
-        </h1>
-        <div className="col-span-2">Links</div>
-        <div className="col-span-1 text-right">GITHUB</div>
-      </header>
+      <Header />
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
-          <div className="col-span-4 lg:col-span-1">
-            {/* <h2 className="text-xl font-bold mb-4">Hustles</h2>
-            {projects.items.map((skill) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-4 text-2xl font-bold">
-                  {skill.name}
-                </span>
-                <span className="col-span-4">{skill.description}</span>
-              </div>
-            ))}
-            <h2 className="text-base font-bold mb-4">Skills</h2>
-            {skills.items.map((skill) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-3 text-xl">{skill.name}</span>
-                <span className="col-span-1">{skill.yearsOfExperience}</span>
-              </div>
-            ))} */}
-          </div>
+          <div className="col-span-4 lg:col-span-1" />
           <div className="col-span-4 lg:col-span-2">
             <Link href="/">
-              <a>{"<-"} Posts</a>
+              <a className="flex items-center mb-2 hover:text-yellow-300">
+                <ChevronLeft size={18} className="mr-1" />
+                Posts
+              </a>
             </Link>
             <h2 className="text-4xl font-bold mb-3">
               {blogPostCollection.items[0].title}

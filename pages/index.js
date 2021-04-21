@@ -2,6 +2,8 @@ import Head from "next/head";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
+import { Header } from "../components/header";
+
 import unified from "unified";
 import parse from "remark-parse";
 import remark2react from "remark-react";
@@ -65,35 +67,13 @@ export default function Home({ initialData }) {
     workHistoryCollection: workHistory = { items: [], total: 0 },
   } = initialData;
 
-  const links = [
-    { href: "posts", text: "Posts" },
-    { href: "about", text: "About" },
-  ];
-
   return (
     <>
       <Head>
         <title>Nazar Maksymchuk - Entreprenuer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header className="container mx-auto block py-4 grid grid-cols-4 gap-4">
-        <h1 className="block col-span-5 md:col-span-1 text-2xl font-bold">
-          <Link href="/">
-            <a className="hover:bg-yellow-200 dark:hover:text-black cursor-pointer">
-              Nazar Maksymchuk
-            </a>
-          </Link>
-        </h1>
-        <div className="col-span-2">
-          {links.map(({ text, href }, i) => (
-            <Link href={href}>
-              <a>{text + (i != links.length - 1 ? " | " : "")}</a>
-            </Link>
-          ))}
-        </div>
-        <div className="col-span-1 text-right">GITHUB</div>
-      </header>
+      <Header />
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">
