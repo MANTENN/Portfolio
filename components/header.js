@@ -4,10 +4,12 @@ import { Moon, Sun } from "react-feather";
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
+
   const links = [
     { href: "posts", text: "Posts" },
     { href: "about", text: "About" },
   ];
+
   return (
     <header className="container mx-auto block py-4 grid grid-cols-4 gap-4">
       <h1 className="block col-span-5 md:col-span-1 text-2xl font-bold">
