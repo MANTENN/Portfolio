@@ -91,7 +91,7 @@ export default function Home({ initialData }) {
                 </h3>
               </div>
             ))}
-            <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
+            {/* <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => (
               <div className="mb-4">
                 <h1 className="text-2xl font-bold">
@@ -116,7 +116,7 @@ export default function Home({ initialData }) {
                   }
                 </p>
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="col-span-4 md:col-span-1 md:order-1">
             <h2 className="text-base font-bold mb-4">
