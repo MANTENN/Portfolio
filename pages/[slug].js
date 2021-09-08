@@ -10,6 +10,9 @@ import parse from "remark-parse";
 import remark2react from "remark-react";
 import { Header } from "../components/header";
 import { ChevronLeft } from "react-feather";
+import dynamic from "next/dynamic";
+
+import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 export const POST_QUERY = gql`
   query post($slug: String) {
@@ -31,6 +34,21 @@ export const POST_QUERY = gql`
 
 const Paragraph = ({ children }) => <p className="mb-2">{children}</p>;
 
+const SyntaxHighlighter = dynamic(
+  () => import("react-syntax-highlighter").then((mod) => mod.Prism),
+  {
+    loading: ({ children }) => <pre>{children}</pre>,
+  }
+);
+
+const Pre = ({ children }) => {
+  return (
+    <SyntaxHighlighter wrapLongLines style={dark}>
+      {children.map(({ props: { children } }) => children).join("")}
+    </SyntaxHighlighter>
+  );
+};
+
 export default function Page({ initialData }) {
   const { blogPostCollection } = initialData || {
     blogPostCollection: {
@@ -39,7 +57,7 @@ export default function Page({ initialData }) {
   };
   const body = unified()
     .use(parse)
-    .use(remark2react, { remarkReactComponents: { p: Paragraph } })
+    .use(remark2react, { remarkReactComponents: { p: Paragraph, pre: Pre } })
     .processSync(blogPostCollection.items[0].body).result;
   return (
     <>
