@@ -88,11 +88,32 @@ export default function Home({ initialData }) {
             {posts.items.map((post) => (
               <div className="mb-2">
                 <h3 className="text-2xl font-bold">
-                  <Link href={post.slug}>
-                    <a className="hover:bg-yellow-200 dark:hover:text-black">
-                      {post.title}
+                  {post.externalArticleLink ? (
+                    <a
+                      className="inline-block hover:bg-yellow-200 dark:hover:text-black"
+                      href={
+                        post.externalArticleLink +
+                        "?utm_source=nmaksymchuk&utm_medium=posts&utm_content=articles"
+                      }
+                      target="_blank"
+                    >
+                      <span className="flex gap-2">
+                        <span>{post.title}</span>
+                        <ShareIcon
+                          className="w-4 h-4"
+                          style={{ marginTop: "5.7px" }}
+                          strokeWidth="1.5"
+                          stroke="black"
+                        />
+                      </span>
                     </a>
-                  </Link>
+                  ) : (
+                    <Link href={post.slug}>
+                      <a className="hover:bg-yellow-200 dark:hover:text-black">
+                        {post.title}
+                      </a>
+                    </Link>
+                  )}
                 </h3>
               </div>
             ))}

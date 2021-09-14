@@ -103,7 +103,10 @@ export default function Home({ initialData }) {
                   {post.externalArticleLink ? (
                     <a
                       className="inline-block hover:bg-yellow-200 dark:hover:text-black"
-                      href={post.externalArticleLink}
+                      href={
+                        post.externalArticleLink +
+                        "?utm_source=nmaksymchuk&utm_medium=home&utm_content=articles"
+                      }
                       target="_blank"
                     >
                       <span className="flex gap-2">
