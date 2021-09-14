@@ -8,6 +8,7 @@ import remark2react from "remark-react";
 
 import { fetcher } from "../lib/graphqlUtils";
 import { Header } from "../components/header";
+import { Article } from "../components/article";
 
 export const PORTFOLIO_QUERY = gql`
   query Portfolio {
@@ -85,38 +86,7 @@ export default function Home({ initialData }) {
             <h2 className="text-xl font-bold mb-3">
               Posts<span className="text-base"> | Articles</span>
             </h2>
-            {posts.items.map((post) => (
-              <div className="mb-2">
-                <h3 className="text-2xl font-bold">
-                  {post.externalArticleLink ? (
-                    <a
-                      className="inline-block hover:bg-yellow-200 dark:hover:text-black"
-                      href={
-                        post.externalArticleLink +
-                        "?utm_source=nmaksymchuk&utm_medium=home&utm_content=articles"
-                      }
-                      target="_blank"
-                    >
-                      <span className="flex gap-2">
-                        <span>{post.title}</span>
-                        <ShareIcon
-                          className="w-4 h-4"
-                          style={{ marginTop: "5.7px" }}
-                          strokeWidth="1.5"
-                          stroke="black"
-                        />
-                      </span>
-                    </a>
-                  ) : (
-                    <Link href={post.slug}>
-                      <a className="hover:bg-yellow-200 dark:hover:text-black">
-                        {post.title}
-                      </a>
-                    </Link>
-                  )}
-                </h3>
-              </div>
-            ))}
+            {posts.items.map(Article)}
             <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => (
               <div className="mb-4">
