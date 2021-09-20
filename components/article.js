@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const ShareIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

@@ -17,6 +17,7 @@ export const PORTFOLIO_QUERY = gql`
         title
         slug
         publishDate
+        externalArticleLink
       }
     }
     workHistoryCollection {
