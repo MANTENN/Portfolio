@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </div>
       </ApolloProvider>
+      <script async data-api="/_hive" src="/bee.js"></script>
     </ThemeProvider>
   );
 }
