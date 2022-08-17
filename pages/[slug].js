@@ -34,18 +34,18 @@ export const POST_QUERY = gql`
 
 const Paragraph = ({ children }) => <p className="mb-2">{children}</p>;
 
-const SyntaxHighlighter = dynamic(
-  () => import("react-syntax-highlighter").then((mod) => mod.Prism),
-  {
-    loading: ({ children }) => <pre>{children}</pre>,
-  }
-);
+// const SyntaxHighlighter = dynamic(
+//   () => import("react-syntax-highlighter").then((mod) => mod.Prism),
+//   {
+//     loading: ({ children }) => <pre>{children}</pre>,
+//   }
+// );
 
 const Pre = ({ children }) => {
   return (
-    <SyntaxHighlighter wrapLongLines style={dark}>
+    <div wrapLongLines style={dark}>
       {children.map(({ props: { children } }) => children).join("")}
-    </SyntaxHighlighter>
+    </div>
   );
 };
 
