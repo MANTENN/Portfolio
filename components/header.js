@@ -34,11 +34,13 @@ export const Header = () => {
             </a>
           </Link>
         </h1>
-        <div className="col-span-2">
+        <div className="col-span-2 divide-x">
           {links.map(({ text, href }, i) => (
-            <Link href={href}>
-              <a>{text + (i != links.length - 1 ? " | " : "")}</a>
-            </Link>
+            <span className="px-2 py-1">
+              <Link href={href}>
+                <a className="hover:text-black hover:bg-yellow-200">{text}</a>
+              </Link>
+            </span>
           ))}
         </div>
         <div className="col-span-4 md:col-span-1 flex gap-2 text-right justify-end">
