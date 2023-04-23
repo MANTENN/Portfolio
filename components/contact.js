@@ -1,10 +1,23 @@
 import { useRouter } from "next/router";
-import { forwardRef, useState } from "react";
+import { createRef as useRef } from "preact";
+import { useState } from "preact/hooks";
+import { forwardRef } from "preact/compat";
 import { useForm } from "react-hook-form";
 
 const QUOTE_ENDPOINT = "https://usebasin.com/f/fb3436a29ba5";
 
-const Input = forwardRef((props) => {
+const Input = forwardRef(function Input(props, ref) {
+  console.log("errors", props.errors);
+  const errorHelper = (field_name) =>
+    props.errors[field_name] && (
+      <span className="block mt-1 font-bold text-xs text-red-700">
+        {props.errors[field_name].message == ""
+          ? props.errors[field_name].type == "required"
+            ? "Field is required"
+            : ""
+          : props.errors[field_name].message}
+      </span>
+    );
   return (
     <div className="flex flex-col gap-1">
       <label>
@@ -12,23 +25,32 @@ const Input = forwardRef((props) => {
       </label>
       <input
         {...props}
-        className="border border-solid border-gray-300 focus:border-blue-300 px-3 py-2 rounded-lg"
+        ref={ref}
+        errors={null}
+        className={[
+          "border border-solid focus:border-blue-300 px-3 py-2 rounded-lg",
+          props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
+        ].join(" ")}
       />
+      {errorHelper(props.name)}
     </div>
   );
 });
 
 export default function Contact({ event = "schedule-session" }) {
   const router = useRouter();
+  const formRef = useRef();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ shouldFocusError: true });
   const [formSubmissionStatus, setFormSubmissionStatus] = useState(false);
   const [networkRequestComplete, updateRequestStatus] = useState(true);
-  const onSubmit = (data) => {
+
+  function onSubmit(values) {
     fetch(QUOTE_ENDPOINT, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       credentials: "same-origin", // include, *same-origin, omit
@@ -57,33 +79,50 @@ export default function Contact({ event = "schedule-session" }) {
         updateRequestStatus(true);
         return false;
       });
-  };
+  }
 
   return (
     <div>
       <h2 className="font-bold text-2xl mb-3">Send Your Shot!</h2>
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="flex flex-col gap-3"
+        onSubmit={handleSubmit(onSubmit)}
+        action={QUOTE_ENDPOINT}
+        method="POST"
+        ref={formRef}
+      >
         <div className="grid md:grid-cols-2 gap-4">
           <Input
             label="First Name"
             {...register("firstName", { required: true })}
+            errors={errors}
           />
           <Input
             label="Last Name"
             {...register("lastName", { required: true })}
+            errors={errors}
           />
         </div>
         <div className="grid md:grid-cols-2 gap-4">
-          <Input label="Email" {...register("email", { required: true })} />
-          <Input label="Phone" {...register("phone", { required: true })} />
+          <Input
+            label="Email"
+            {...register("email", { required: true })}
+            errors={errors}
+          />
+          <Input
+            label="Phone"
+            {...register("phone", { required: true })}
+            errors={errors}
+          />
         </div>
         <Input
           label="Message"
           {...register("message", { required: true })}
+          errors={errors}
           as={"textarea"}
         />
         <button
-          className="bg-yellow-300 text-white p-3 rounded-lg text-green-800 font-bold flex-auto flex-grow-0"
+          className="bg-yellow-300 hover:bg-yellow-400 text-white p-3 rounded-lg text-green-800 hover:text-black focus:bg-green-800 focus:text-white disabled:pulse-animate font-bold flex-auto flex-grow-0"
           type="submit"
           disabled={!networkRequestComplete}
         >
