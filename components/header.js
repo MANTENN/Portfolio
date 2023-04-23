@@ -1,7 +1,19 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "react-feather";
-import { GitHub } from "react-feather";
+import { GitHub, Twitter, Youtube, Instagram } from "react-feather";
+
+const SocialLink = ({ icon: Icon, href, alt, title }) => (
+  <a
+    href={href}
+    target="_blank"
+    className="flex w-8 p-2 h-8 items-center justify-center rounded-full hover:bg-yellow-200 dark:hover:text-yellow-300 focus:bg-yellow-200 focus:outline-green-800 focus:outline focus:outline-solid "
+    alt={alt}
+    title={title || alt}
+  >
+    <Icon size={22} />
+  </a>
+);
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -35,14 +47,27 @@ export const Header = () => {
           {theme != "dark" ? <Moon size={18} /> : <Sun size={18} />}
         </button>
       </div>
-      <div className="col-span-1 text-right">
-        <a
+      <div className="col-span-1 flex gap-2 text-right">
+        <SocialLink
           href="https://github.com/MANTENN"
-          className="flex w-8 p-2 h-8 items-center justify-center rounded-full hover:bg-yellow-200 dark:hover:text-yellow-300"
           alt="github"
-        >
-          <GitHub size={22} />
-        </a>
+          icon={GitHub}
+        />
+        <SocialLink
+          href="https://twitter.com/MANTENNN"
+          alt="Twitter"
+          icon={Twitter}
+        />
+        <SocialLink
+          href="https://www.youtube.com/@nazarm6215/videos"
+          alt="Youtube"
+          icon={Youtube}
+        />
+        <SocialLink
+          href="https://www.instagram.com/mantennn/"
+          alt="Instagram"
+          icon={Instagram}
+        />
       </div>
     </header>
   );
