@@ -86,10 +86,6 @@ export default function Home({ initialData }) {
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">
-            <h2 className="text-xl font-bold mb-3">
-              Posts<span className="text-base"> | Articles</span>
-            </h2>
-            {posts.items.map(Article)}
             <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => (
               <div className="mb-4">

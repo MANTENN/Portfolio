@@ -22,15 +22,27 @@ const Input = forwardRef(function Input(props, ref) {
       <label>
         {props.label} <span className="text-red-800">*</span>
       </label>
-      <input
-        {...props}
-        ref={ref}
-        errors={null}
-        className={[
-          "border border-solid focus:border-blue-300 px-3 py-2 rounded-lg",
-          props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
-        ].join(" ")}
-      />
+      {props.as == "textarea" ? (
+        <textarea
+          {...props}
+          ref={ref}
+          errors={null}
+          className={[
+            "border border-solid focus:border-blue-300 px-3 py-2 rounded-lg",
+            props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
+          ].join(" ")}
+        />
+      ) : (
+        <input
+          {...props}
+          ref={ref}
+          errors={null}
+          className={[
+            "border border-solid focus:border-blue-300 px-3 py-2 rounded-lg",
+            props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
+          ].join(" ")}
+        />
+      )}
       {errorHelper(props.name)}
     </div>
   );
