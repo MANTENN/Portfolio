@@ -3,11 +3,18 @@ import { Header } from "../components/header";
 import Sidebar from "../components/sidebar";
 
 export default function Thanks({ initialData }) {
+  const router = useRouter();
+  const { email } = router.query;
   return (
     <>
       <Head>
         <title>Success - Entreprenuer</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_7qpadqcv', {"optOut":false,"useDecimalCurrencyValues":true,"email":${email}});rdt('track', 'PageVisit');rdt('track', 'Lead', { itemCount: 1});`,
+          }}
+        />
       </Head>
       <Header />
       <div className="container mx-auto mb-20">
