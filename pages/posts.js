@@ -9,6 +9,7 @@ import remark2react from "remark-react";
 import { fetcher } from "../lib/graphqlUtils";
 import { Header } from "../components/header";
 import { Article } from "../components/article";
+import Sidebar from "../components/sidebar";
 
 export const PORTFOLIO_QUERY = gql`
   query Portfolio {
@@ -89,30 +90,7 @@ export default function Home({ initialData }) {
             </h2>
             {posts.items.map(Article)}
           </div>
-          <div className="col-span-4 md:col-span-1 md:order-1">
-            <h2 className="text-base font-bold mb-4">
-              Hustles | Side Projects
-            </h2>
-            {projects.items.map((hustle) => (
-              <a
-                target="_blank"
-                href={
-                  hustle.link +
-                  "?utm_source=nmaksymchuk.com&utm_medium=projects"
-                }
-              >
-                <div className="row grid grid-cols-4 gap-4 mb-2">
-                  <span className="col-span-4 text-2xl font-bold">
-                    <span className="hover:bg-yellow-200  dark:hover:text-black">
-                      {hustle.name}
-                    </span>
-                  </span>
-                  {/* <span className="col-span-4">{"<Image /> here"}</span> */}
-                  {/* <span className="col-span-4">{hustle.description}</span> */}
-                </div>
-              </a>
-            ))}
-          </div>
+          <Sidebar projects={projects} skills={skills} />
         </div>
       </div>
     </>
