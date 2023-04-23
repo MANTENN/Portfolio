@@ -21,6 +21,7 @@ export const Header = () => {
   const links = [
     { href: "posts", text: "Posts" },
     { href: "about", text: "About" },
+    { href: "contact", text: "Contact" },
   ];
 
   return (

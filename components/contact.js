@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 const QUOTE_ENDPOINT = "https://usebasin.com/f/fb3436a29ba5";
 
 const Input = forwardRef(function Input(props, ref) {
-  console.log("errors", props.errors);
   const errorHelper = (field_name) =>
     props.errors[field_name] && (
       <span className="block mt-1 font-bold text-xs text-red-700">
@@ -37,7 +36,10 @@ const Input = forwardRef(function Input(props, ref) {
   );
 });
 
-export default function Contact({ event = "schedule-session" }) {
+export default function Contact({
+  title = "Shoot your shoot!",
+  event = "schedule-session",
+}) {
   const router = useRouter();
   const formRef = useRef();
 
@@ -83,7 +85,7 @@ export default function Contact({ event = "schedule-session" }) {
 
   return (
     <div>
-      <h2 className="font-bold text-2xl mb-3">Send Your Shot!</h2>
+      <h2 className="font-bold text-2xl mb-6">{title}</h2>
       <form
         className="flex flex-col gap-3"
         onSubmit={handleSubmit(onSubmit)}
