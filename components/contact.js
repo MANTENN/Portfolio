@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
-import { createRef as useRef } from "preact";
-import { useState } from "preact/hooks";
-import { forwardRef } from "preact/compat";
+import { useRef, useState, forwardRef } from "react";
 import { useForm } from "react-hook-form";
 
 const QUOTE_ENDPOINT = "https://usebasin.com/f/fb3436a29ba5";

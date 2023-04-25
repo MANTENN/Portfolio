@@ -1,4 +1,4 @@
-import Head from "next/dist/next-server/lib/head";
+import Head from "next/head";
 import { default as ContactForm } from "../components/contact";
 import { Header } from "../components/header";
 import Sidebar from "../components/sidebar";
