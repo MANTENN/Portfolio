@@ -1,4 +1,5 @@
 import { Star } from "../components/star";
+import { ShareIcon } from "./article";
 
 export const Review = ({ i, ...review }) => (
   <div key={i} className="italic text-xl mb-3">
@@ -15,7 +16,25 @@ export const Review = ({ i, ...review }) => (
         </div>
       ) : null}
       <div>{review.name}</div>
-      {review.source == 0 ? <div>— Fiverr</div> : null}
+      {review.source == 0 ? (
+        <div>
+          —{" "}
+          <a
+            href="https://www.fiverr.com/nmaksymchuk"
+            target="_blank"
+            className="inline-flex gap-2 hover:bg-yellow-200 dark:hover:text-black"
+            rel="nofollow noreferrer noopener"
+          >
+            Fiverr{" "}
+            <ShareIcon
+              className="w-4 h-4"
+              style={{ marginTop: "5.7px" }}
+              strokeWidth="1.5"
+              stroke="currentcolor"
+            />
+          </a>
+        </div>
+      ) : null}
     </div>
     {review.time.length >= 0 ? (
       <div>
