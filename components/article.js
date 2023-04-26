@@ -35,7 +35,7 @@ export const Article = (post) => {
                 className="w-4 h-4"
                 style={{ marginTop: "5.7px" }}
                 strokeWidth="1.5"
-                stroke="black"
+                stroke="currentcolor"
               />
             </span>
           </a>
