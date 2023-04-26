@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Header } from "../components/header";
 import Sidebar from "../components/sidebar";
 
 export default function Thanks({ initialData }) {
@@ -17,7 +16,6 @@ export default function Thanks({ initialData }) {
           }}
         />
       </Head>
-      <Header />
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">

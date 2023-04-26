@@ -82,7 +82,6 @@ export default function Home({ initialData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">

@@ -27,3 +27,6 @@ a {
 .padded-container {
   max-width: calc(theme(maxWidth.5xl) + 60px)
 }
+.will-change-top {
+  will-change: top, opacity;
+}

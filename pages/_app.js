@@ -3,6 +3,7 @@ import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../lib/apolloClient";
 import NProgressBar from "nextjs-progressbar";
 import { ThemeProvider } from "next-themes";
+import { DefaultLayout as Layout } from "../layouts/default";
 
 import { useSpring, animated } from "@react-spring/web";
 import { useRouter } from "next/router";
@@ -56,10 +57,15 @@ export default function App({ Component, pageProps }) {
           stopDelayMs={200}
           height="4"
         />
-
-        <animated.div style={transition} key={router.pathname}>
-          <Component {...pageProps} />
-        </animated.div>
+        <Layout>
+          <animated.div
+            className="will-change-top"
+            style={transition}
+            key={router.pathname}
+          >
+            <Component {...pageProps} />
+          </animated.div>
+        </Layout>
       </ApolloProvider>
     </ThemeProvider>
   );
