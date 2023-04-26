@@ -23,6 +23,7 @@ const Input = forwardRef(function Input(props, ref) {
       {props.as == "textarea" ? (
         <textarea
           {...props}
+          rows="6"
           ref={ref}
           errors={null}
           className={[

@@ -1,3 +1,7 @@
 export function Footer() {
-  return <span>© 2023 Nazar Maksymchuk</span>;
+  return (
+    <footer class="container mx-auto p-2">
+      <span>© 2023 Nazar Maksymchuk</span>
+    </footer>
+  );
 }

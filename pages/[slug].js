@@ -66,11 +66,10 @@ export default function Page({ initialData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 lg:col-span-1" />
-          <div className="col-span-4 lg:col-span-2">
+          <div className="col-span-4 lg:col-span-3">
             <Link href="/">
               <a className="flex items-center mb-2 hover:text-yellow-300">
                 <ChevronLeft size={18} className="mr-1" />
@@ -118,24 +117,6 @@ export default function Page({ initialData }) {
               </div>
             ))} */}
           </div>
-          <div className="col-span-4 lg:col-span-1">
-            {/* <h2 className="text-xl font-bold mb-4">Hustles</h2>
-            {projects.items.map((skill) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-4 text-2xl font-bold">
-                  {skill.name}
-                </span>
-                <span className="col-span-4">{skill.description}</span>
-              </div>
-            ))}
-            <h2 className="text-base font-bold mb-4">Skills</h2>
-            {skills.items.map((skill) => (
-              <div className="row grid grid-cols-4 gap-4 mb-2">
-                <span className="col-span-3 text-xl">{skill.name}</span>
-                <span className="col-span-1">{skill.yearsOfExperience}</span>
-              </div>
-            ))} */}
-          </div>{" "}
         </div>
       </div>
     </>
