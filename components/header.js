@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "react-feather";
-import { GitHub, Twitter, Youtube, Instagram } from "react-feather";
+import { GitHub, Twitter, Youtube, Instagram, Linkedin } from "react-feather";
 
 const IconLink = ({
   icon: Icon,
@@ -34,6 +34,7 @@ const IconLink = ({
       href={href}
       target="_blank"
       className={className}
+      rel="nofollow noreferrer noopener"
       alt={alt}
       title={title || alt}
     >
@@ -90,6 +91,11 @@ export const Header = () => {
             href="https://www.instagram.com/mantennn/"
             alt="Instagram"
             icon={Instagram}
+          />
+          <IconLink
+            href="https://linkedin.com/in/nmaksymchuk"
+            alt="LinkedIn"
+            icon={Linkedin}
           />
           <IconLink
             ariaLabel={`Toggle ${theme != "dark" ? "Dark" : "light"} Mode`}
