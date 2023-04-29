@@ -53,16 +53,16 @@ export const Header = () => {
   ];
 
   return (
-    <header className="sticky top-4 bg-white dark:bg-gray-800 shadow-md rounded-2xl container padded-container mx-auto z-10">
+    <header className="sticky top-4 bg-white bg-opacity-70 backdrop-filter backdrop-blur-md dark:bg-gray-800 shadow-md rounded-2xl container padded-container mx-auto z-10">
       <div className="container mx-auto block py-4 grid grid-cols-4 gap-4 items-center">
-        <h1 className="block col-span-5 md:col-span-1 text-2xl font-bold">
+        <h1 className="block col-span-1 md:col-span-1 text-2xl font-bold">
           <Link href="/">
             <a className="hover:bg-yellow-200 dark:hover:text-black cursor-pointer">
-              Nazar Maksymchuk
+              N<span className="hidden md:inline-block">azar Maksymchuk</span>
             </a>
           </Link>
         </h1>
-        <div className="col-span-2 divide-x dark:divide-gray-600">
+        <div className="hidden md:block md:col-span-2 divide-x dark:divide-gray-600">
           {links.map(({ text, href }, i) => (
             <span className="px-2 py-1">
               <Link href={href}>
@@ -71,7 +71,7 @@ export const Header = () => {
             </span>
           ))}
         </div>
-        <div className="col-span-4 md:col-span-1 flex gap-2 text-right justify-end">
+        <div className="col-span-3 md:col-span-1 flex gap-2 text-right justify-end">
           <IconLink
             href="https://github.com/MANTENN"
             alt="github"
