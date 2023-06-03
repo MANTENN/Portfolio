@@ -10,15 +10,15 @@ export const ShareIcon = (props) => (
     <path
       d="M9.25 14.523 23.25.75m0 7.871V.75h-8m-3.125 5h-10.5a.875.875 0 0 0-.875.875v15.75a.875.875 0 0 0 .875.875h15.75a.875.875 0 0 0 .875-.875v-10.5"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
 
-export const Article = (post) => {
+export const Article = (post, i) => {
   return (
-    <div className="mb-2">
+    <div className="mb-2" key={i}>
       <h3 className="text-2xl font-bold">
         {post.externalArticleLink ? (
           <a
@@ -40,10 +40,11 @@ export const Article = (post) => {
             </span>
           </a>
         ) : (
-          <Link href={post.slug}>
-            <a className="hover:bg-yellow-200 dark:hover:text-black">
-              {post.title}
-            </a>
+          <Link
+            href={post.slug}
+            className="hover:bg-yellow-200 dark:hover:text-black"
+          >
+            {post.title}
           </Link>
         )}
       </h3>

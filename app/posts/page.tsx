@@ -1,16 +1,11 @@
 import Head from "next/head";
-import { gql, useQuery } from "@apollo/client";
-import Link from "next/link";
+import { gql } from "@apollo/client";
 
-import unified from "unified";
-import parse from "remark-parse";
-import remark2react from "remark-react";
+import { fetcher } from "../../lib/graphqlUtils";
+import { Article } from "../../components/article";
+import Sidebar from "../../components/sidebar";
 
-import { fetcher } from "../lib/graphqlUtils";
-import { Article } from "../components/article";
-import Sidebar from "../components/sidebar";
-
-export const PORTFOLIO_QUERY = gql`
+const PORTFOLIO_QUERY = gql`
   query Portfolio {
     blogPostCollection {
       items {
@@ -59,14 +54,13 @@ export const PORTFOLIO_QUERY = gql`
   }
 `;
 
-export default function Home({ initialData }) {
-  // const { loading, error, data = {} } = useQuery(PORTFOLIO_QUERY);
+export default async function Posts() {
   const {
     blogPostCollection: posts = { items: [], total: 0 },
     skillCollection: skills = { items: [], total: 0 },
     projectCollection: projects = { items: [], total: 0 },
     workHistoryCollection: workHistory = { items: [], total: 0 },
-  } = initialData;
+  } = await fetcher(PORTFOLIO_QUERY);
 
   const links = [
     { href: "posts", text: "Posts" },
@@ -93,16 +87,4 @@ export default function Home({ initialData }) {
       </div>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const data = await fetcher(PORTFOLIO_QUERY);
-
-  // when no typee of page is not found return 404 page
-  return {
-    props: {
-      initialData: data,
-    },
-    revalidate: 60,
-  };
 }

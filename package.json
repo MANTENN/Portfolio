@@ -7,14 +7,22 @@
     "build": "next build",
     "start": "next start"
   },
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "@apollo/client": "^3.3.6",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.4.4",
     "autoprefixer": "^10.1.0",
     "fecha": "^4.2.0",
     "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",
+    "gray-matter": "^4.0.3",
     "module-alias": "^2.2.2",
-    "next": "^12.3.4",
+    "next": "^13.4.4",
+    "next-mdx-remote": "^4.4.1",
     "next-plugin-preact": "^3.0.7",
     "next-themes": "^0.2.1",
     "nextjs-progressbar": "^0.0.16",
@@ -28,9 +36,13 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype": "^12.0.0",
     "rehype-highlight": "^5.0.0",
+    "remark-frontmatter": "^4.0.1",
     "remark-parse": "^9.0.0",
     "remark-react": "^8.0.0",
     "tailwindcss": "^2.1.1",
     "unified": "^9.2.1"
+  },
+  "devDependencies": {
+    "eslint-config-next": "^13.4.4"
   }
 }

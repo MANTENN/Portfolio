@@ -1,0 +1,17 @@
+---
+title: PKCE Oauth 2 Flow
+author: 1
+publishDate: 05/06/2023
+---
+
+There are tons of how to use X OAuth 2.O PKCE service articles out there but they all have non-uniform explainations for PKCE and the role it plays in OAUTH. This is a generic overview of PKCE used in OAuth.
+<h2 class="font-bold text-2xl my-2">High-Level PKCE Overview</h2>
+<div>
+  <div>1. User Sends Requests to OAuth endpoint to get a code w/ codeChallenge and codeVerifier</div>
+  <div>2. User sends an another request </div>
+</div>
+
+<Star data={frontmatter.js} />
+
+<h2 class="font-bold text-xl my-2">TLDR;</h2>
+<p>Code Challenge, Code Challenge Method, and Code Verifier behave like a CSRF system except this time, the client generates it and on the second request sends the private key for the OAuth end-point to confirm that the second request came from the user rather than the person in the middle who intercepted the request.</p>

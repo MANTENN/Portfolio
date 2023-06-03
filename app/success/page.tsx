@@ -4,8 +4,8 @@ import Head from "next/head";
 import Sidebar from "../../components/sidebar";
 
 export default function Thanks({ params }) {
-  const { router } = useSearchParams();
-  const email = 1;
+  const searchParams = useSearchParams();
+  const email = searchParams?.get("email");
   return (
     <>
       <Head>

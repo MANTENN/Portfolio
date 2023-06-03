@@ -8,7 +8,7 @@ import Sidebar from "../components/sidebar";
 import { reviews } from "../data";
 import { Review } from "../components/reviews";
 
-export const PORTFOLIO_QUERY = gql`
+const PORTFOLIO_QUERY = gql`
   query Portfolio {
     blogPostCollection {
       items {
@@ -57,14 +57,15 @@ export const PORTFOLIO_QUERY = gql`
   }
 `;
 
-export default function Home({ initialData }) {
-  // const { loading, error, data = {} } = useQuery(PORTFOLIO_QUERY);
+export default async function Page() {
   const {
     blogPostCollection: posts = { items: [], total: 0 },
     skillCollection: skills = { items: [], total: 0 },
     projectCollection: projects = { items: [], total: 0 },
     workHistoryCollection: workHistory = { items: [], total: 0 },
-  } = initialData;
+  } = await fetcher(PORTFOLIO_QUERY);
+
+  // const { loading, error, data = {} } = useQuery(PORTFOLIO_QUERY);
 
   return (
     <>
@@ -107,7 +108,7 @@ export default function Home({ initialData }) {
             ))} */}
             <h2 className="text-xl font-bold mt-6 mb-3">Reviews</h2>
             {reviews.map((review, i) => (
-              <Review key={i} {...review} />
+              <Review key={i} i={i} {...review} />
             ))}
             <h3 className="text-xs font-bold mb-2">Original Review Text</h3>
             {reviews.map((review, i) => (
@@ -121,16 +122,4 @@ export default function Home({ initialData }) {
       </div>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const data = await fetcher(PORTFOLIO_QUERY);
-
-  // when no typee of page is not found return 404 page
-  return {
-    props: {
-      initialData: data,
-    },
-    revalidate: 60,
-  };
 }

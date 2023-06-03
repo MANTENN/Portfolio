@@ -30,3 +30,6 @@ a {
 .will-change-top {
   will-change: top, opacity;
 }
+.contents a {
+  @apply text-blue-600;
+}

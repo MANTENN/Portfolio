@@ -1,17 +1,17 @@
 import { Star } from "../components/star";
 import { ShareIcon } from "./article";
 
-export const Review = ({ i, ...review }) => (
-  <div key={i} className="italic text-xl mb-3">
+export const Review = (review) => (
+  <div className="italic text-xl mb-3">
     <div className="text-2xl">
       {review.text}
-      <span className="text-xs -mb-2">{i}</span>
+      <span className="text-xs -mb-2">{review.i}</span>
     </div>
     <div className="flex items-center gap-2">
       {review.rating ? (
         <div className="flex text-yellow-500 my-2">
-          {new Array(review.rating).fill(0).map((_) => (
-            <Star className="w-8 h-8 p-1 fill-current" />
+          {new Array(review.rating).fill(0).map((_, i) => (
+            <Star className="w-8 h-8 p-1 fill-current" key={i} />
           ))}
         </div>
       ) : null}
