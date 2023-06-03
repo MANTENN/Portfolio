@@ -70,10 +70,12 @@ export default function Contact({
       credentials: "same-origin", // include, *same-origin, omit
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: new FormData(formRef.current), // body data type must match "Content-Type" header
+      headers: {
+        Accept: "application/json",
+      },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("data", data);
         const { success } = data;
         if (success) {
           setFormSubmissionStatus(true);
@@ -84,6 +86,7 @@ export default function Contact({
         return false;
       })
       .catch((e) => {
+        // display error to get rid of false positive
         setFormSubmissionStatus(true);
         router.push({ pathname: "/success" });
         console.log(e);
@@ -145,7 +148,7 @@ export default function Contact({
         </button>
         {formSubmissionStatus && (
           <p className="bg-blue-600 text-blue p-4 mt-4 m-1 rounded-xl">
-            Your message has been recieved. I will reach out to you shortly.
+            Your message has been received. I will reach out to you shortly.
           </p>
         )}
       </form>
