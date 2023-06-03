@@ -54,6 +54,10 @@ const PORTFOLIO_QUERY = gql`
   }
 `;
 
+export const metadata = {
+  title: "Posts By Nazar Maksymchuk",
+};
+
 export default async function Posts() {
   const {
     blogPostCollection: posts = { items: [], total: 0 },

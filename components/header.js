@@ -1,55 +1,42 @@
-"use client";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "react-feather";
+import Link from "./link";
 import { GitHub, Twitter, Youtube, Instagram, Linkedin } from "react-feather";
-
-const IconLink = ({
-  icon: Icon,
-  href,
-  alt,
-  title,
-  onClick,
-  ariaLabel,
-  className: customClassName,
-  ...props
-}) => {
-  const className =
-    "flex w-8 p-2 h-8 items-center justify-center rounded-full hover:bg-yellow-200 dark:hover:text-yellow-300 focus:bg-yellow-200 focus:outline-green-800 focus:outline focus:outline-solid dark:hover:text-green-800 dark:focus:text-green-800 transition-all duration-300	ease-in-out";
-  if (onClick) {
-    return (
-      <button
-        aria-label={ariaLabel}
-        type="button"
-        className={[className, customClassName].join(" ")}
-        onClick={onClick}
-        {...props}
-      >
-        <Icon size={18} />
-      </button>
-    );
-  }
-  return (
-    <a
-      href={href}
-      target="_blank"
-      className={className}
-      rel="nofollow noreferrer noopener"
-      alt={alt}
-      title={title || alt}
-    >
-      <Icon size={22} />
-    </a>
-  );
-};
+import { IconLink } from "./icon-link";
+import { ToggleDarkAndLightModeIcon } from "./toggle-theme";
+import { Suspense } from "react";
 
 export const Header = () => {
-  const { theme, setTheme } = useTheme();
-
   const headerMenuLinks = [
     { href: "posts", text: "Posts" },
     { href: "about", text: "About" },
     { href: "contact", text: "Contact" },
+  ];
+
+  const socialLinks = [
+    {
+      href: "https://github.com/MANTENN",
+      alt: "GitHub",
+      icon: GitHub,
+    },
+    {
+      href: "https://twitter.com/mantennn",
+      alt: "Twitter",
+      icon: Twitter,
+    },
+    {
+      href: "https://www.youtube.com/@nazarm6215/videos",
+      alt: "Youtube",
+      icon: Youtube,
+    },
+    {
+      href: "https://www.instagram.com/mantennn/",
+      alt: "Instagram",
+      icon: Instagram,
+    },
+    {
+      href: "https://linkedin.com/in/nmaksymchuk",
+      alt: "LinkedIn",
+      icon: Linkedin,
+    },
   ];
 
   return (
@@ -76,37 +63,12 @@ export const Header = () => {
           ))}
         </div>
         <div className="col-span-3 md:col-span-1 flex gap-2 text-right justify-end">
-          <IconLink
-            href="https://github.com/MANTENN"
-            alt="github"
-            icon={GitHub}
-          />
-          <IconLink
-            href="https://twitter.com/MANTENNN"
-            alt="Twitter"
-            icon={Twitter}
-          />
-          <IconLink
-            href="https://www.youtube.com/@nazarm6215/videos"
-            alt="Youtube"
-            icon={Youtube}
-          />
-          <IconLink
-            href="https://www.instagram.com/mantennn/"
-            alt="Instagram"
-            icon={Instagram}
-          />
-          <IconLink
-            href="https://linkedin.com/in/nmaksymchuk"
-            alt="LinkedIn"
-            icon={Linkedin}
-          />
-          <IconLink
-            ariaLabel={`Toggle ${theme != "dark" ? "Dark" : "light"} Mode`}
-            icon={theme != "dark" ? Moon : Sun}
-            className={"ml-4"}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          />
+          {socialLinks.map(({ href, alt, icon }) => (
+            <IconLink href={href} alt={alt} icon={icon} key={alt} />
+          ))}
+          <Suspense fallback={null}>
+            <ToggleDarkAndLightModeIcon className={"ml-10"} />
+          </Suspense>
         </div>
       </div>
     </header>

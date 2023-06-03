@@ -1,6 +1,4 @@
-import Head from "next/head";
-import { gql, useQuery } from "@apollo/client";
-
+import { gql } from "@apollo/client";
 import { fetcher } from "../lib/graphqlUtils";
 import { Article } from "../components/article";
 import Sidebar from "../components/sidebar";
@@ -57,6 +55,10 @@ const PORTFOLIO_QUERY = gql`
   }
 `;
 
+export const metadata = {
+  title: "Nazar Maksymchuk — Freelance Fullstack Developer",
+};
+
 export default async function Page() {
   const {
     blogPostCollection: posts = { items: [], total: 0 },
@@ -69,10 +71,6 @@ export default async function Page() {
 
   return (
     <>
-      <Head>
-        <title>Nazar Maksymchuk - Entreprenuer</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-4 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">

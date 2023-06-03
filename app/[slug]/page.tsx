@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { gql, useQuery } from "@apollo/client";
-import Link from "next/link";
+import Link from "../../components/link";
 import { format } from "fecha";
 
 import { fetcher } from "../../lib/graphqlUtils";
@@ -33,6 +33,12 @@ const POST_QUERY = gql`
     }
   }
 `;
+
+export async function generateMetadata({ params, searchParams }, parent?) {
+  const { slug } = params;
+  const data = await getBlogPost({ slug });
+  return { title: data.title + " by Nazar Maksymchuk" };
+}
 
 const Paragraph = ({ children }) => <p className="mb-2">{children}</p>;
 

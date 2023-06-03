@@ -5,6 +5,10 @@ import Sidebar from "../../components/sidebar";
 import { reviews } from "../../data";
 import { Review } from "../../components/reviews";
 
+export const metadata = {
+  title: "Contact Nazar Maksymchuk",
+};
+
 export default async function Contact() {
   return (
     <>
