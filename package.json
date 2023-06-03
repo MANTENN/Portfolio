@@ -44,6 +44,8 @@
     "unified": "^9.2.1"
   },
   "devDependencies": {
-    "eslint-config-next": "^13.4.4"
+    "@types/node": "^20.2.5",
+    "eslint-config-next": "^13.4.4",
+    "typescript": "^5.1.3"
   }
 }
