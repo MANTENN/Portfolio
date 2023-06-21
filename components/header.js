@@ -7,6 +7,7 @@ import { Suspense } from "react";
 export const Header = () => {
   const headerMenuLinks = [
     { href: "posts", text: "Posts" },
+    { href: "pricing", text: "Pricing" },
     { href: "about", text: "About" },
     { href: "contact", text: "Contact" },
   ];

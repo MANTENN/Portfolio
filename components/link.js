@@ -11,6 +11,7 @@ export default function ProgressLink(props) {
   const linkRef = useRef();
   const nprogressTimer = useRef();
   // becomes tricky for same-path pages
+  // and loading.tsx files
   useEffect(() => {
     const routeChangeStart = (e) => {
       nprogressTimer.current = setTimeout(NProgress.start, 100);

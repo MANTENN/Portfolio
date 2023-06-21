@@ -6,6 +6,7 @@ import Sidebar from "../../components/sidebar";
 export default function Thanks({ params }) {
   const searchParams = useSearchParams();
   const email = searchParams?.get("email");
+
   return (
     <>
       <Head>
