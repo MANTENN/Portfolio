@@ -2,11 +2,7 @@ export default function Sidebar({
   projects = { items: [] },
   skills = { items: [] },
   children,
-}: {
-  projects: { items: any[] };
-  skills: { items: any[] };
-  children?: string;
-}) {
+}: any) {
   return (
     <div className="col-span-4 md:col-span-1 md:order-1">
       {children}
