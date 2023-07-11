@@ -261,7 +261,7 @@ export default function Pricing({ params }) {
               <p className="text-lg leading-8 mt-4 mb-10">
                 Are you looking to urgently deploy your project or need urgent
                 response times in the future such as support? I offer retainers
-                to customers who need expedited services on demand.
+                for expedited services.
               </p>
               <div className="grid grid-cols-2 gap-6 mt-4">
                 {generalPlans.map(ServicePlanCard)}

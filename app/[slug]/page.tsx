@@ -15,6 +15,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 // import { MDXRemote } from "next-mdx-remote";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { Steps } from "../../components/steps";
+import { H2 } from "../../components/headings";
 
 const POST_QUERY = gql`
   query post($slug: String) {
@@ -86,7 +87,11 @@ async function getBlogPost({ slug }) {
         },
         scope: markdownMetaData,
       },
-      components: { Star },
+      components: {
+        Star,
+        h1: H2,
+        h2: H2,
+      },
     });
     return {
       title:
@@ -119,7 +124,12 @@ async function getBlogPost({ slug }) {
     ? unified()
         .use(parse)
         .use(remark2react, {
-          remarkReactComponents: { p: Paragraph, pre: Pre, Steps: Steps },
+          remarkReactComponents: {
+            h2: H2,
+            p: Paragraph,
+            pre: Pre,
+            Steps: Steps,
+          },
         })
         .processSync(contentfulBlogPost.body)
     : { result: "" };
