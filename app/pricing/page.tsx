@@ -2,6 +2,9 @@ import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import Sidebar from "../../components/sidebar";
 import Contact from "../../components/contact";
+import { Review } from "../../components/reviews";
+
+import { reviews } from "../../data";
 
 export const metadata = {
   title: "Pricing | Nazar Maksymchuk",
@@ -364,6 +367,10 @@ export default function Pricing({ params }) {
                   </li>
                 ))}
               </ul>
+              <div className="mb-16">
+                <h2 className="text-2xl font-bold mb-6">Testimonials</h2>
+                {reviews.map(Review)}
+              </div>
               <Contact title="Have any more questions you would like to get answered?" />
             </div>
           </div>
