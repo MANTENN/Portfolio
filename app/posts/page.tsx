@@ -79,7 +79,7 @@ export default async function Posts() {
       </Head>
 
       <div className="container mx-auto mb-20">
-        <div className="row grid grid-cols-4 gap-4 mt-8">
+        <div className="row grid grid-cols-9 gap-4 mt-8">
           <div className="col-span-4 md:col-span-3 md:order-2">
             <h2 className="text-xl font-bold mb-3">
               Posts<span className="text-base"> | Articles</span>

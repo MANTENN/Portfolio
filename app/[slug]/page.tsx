@@ -154,9 +154,9 @@ export default async function Page({ params }) {
       </Head>
 
       <div className="container mx-auto mb-20">
-        <div className="row grid grid-cols-4 gap-4 mt-8">
-          <div className="col-span-4 lg:col-span-1" />
-          <div className="col-span-4 lg:col-span-3">
+        <div className="row grid grid-cols-9 gap-4 mt-8">
+          <div className="col-span-4 lg:col-span-2" />
+          <div className="col-span-4 lg:col-span-5">
             <Link
               href="/"
               className="flex items-center mb-2 hover:text-yellow-300"

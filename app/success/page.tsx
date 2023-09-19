@@ -19,8 +19,8 @@ export default function Thanks({ params }) {
         />
       </Head>
       <div className="container mx-auto mb-20">
-        <div className="row grid grid-cols-4 gap-4 mt-8">
-          <div className="col-span-4 md:col-span-3 md:order-2">
+        <div className="row grid grid-cols-9 gap-4 mt-8">
+          <div className="col-span-4 md:col-span-5 md:order-2">
             <div className="max-w-xl">
               <div className="flex flex-row gap-4 items-center mb-4">
                 <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center">
