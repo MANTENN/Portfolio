@@ -140,7 +140,7 @@ export default function Contact({
           as={"textarea"}
         />
         <button
-          className="bg-yellow-300 hover:bg-yellow-400 text-white p-3 rounded-lg text-green-800 hover:text-black focus:bg-green-800 focus:text-white disabled:pulse-animate font-bold flex-auto flex-grow-0"
+          className="bg-black hover:bg-gray-800 border border-solid border-black dark:hover:border-yellow-200 text-white px-4 py-3 rounded-2xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none  disabled:pulse-animate "
           type="submit"
           disabled={!networkRequestComplete}
         >

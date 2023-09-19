@@ -51,7 +51,7 @@ export const Header = () => {
             N<span className="hidden md:inline-block">azar Maksymchuk</span>
           </Link>
         </h1>
-        <div className="hidden md:block md:col-span-2 divide-x dark:divide-gray-600">
+        <div className="hidden md:block md:col-span-2">
           {headerMenuLinks.map(({ text, href }, i) => (
             <span className="px-3 py-1" key={i}>
               <Link
