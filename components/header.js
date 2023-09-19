@@ -41,7 +41,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="sticky top-4 bg-white bg-opacity-70 backdrop-filter backdrop-blur-md dark:bg-gray-800 shadow-md rounded-2xl container padded-container mx-auto z-10">
+    <header className="sticky top-4 bg-white bg-opacity-70 backdrop-filter backdrop-blur-md dark:bg-gray-800 shadow-xs border border-solid border-white border-opacity-10 rounded-2xl container padded-container mx-auto z-10">
       <div className="container mx-auto block py-4 grid grid-cols-4 gap-4 items-center">
         <h1 className="block col-span-1 md:col-span-1 text-2xl font-bold">
           <Link

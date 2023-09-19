@@ -4,7 +4,7 @@ export default function Sidebar({
   children,
 }: any) {
   return (
-    <div className="col-span-4 md:col-span-1 md:order-1">
+    <div className="col-span-4 md:col-span-2 md:order-1">
       {children}
       <h2 className="text-base font-bold mb-4">Hustles | Side Projects</h2>
       {projects.items.map((hustle: { link: string; name: string }, i) => (

@@ -22,10 +22,10 @@ a {
 }
 
 .container {
-  @apply max-w-5xl;
+  @apply max-w-7xl;
 }
 .padded-container {
-  max-width: calc(theme(maxWidth.5xl) + 60px)
+  max-width: calc(theme(maxWidth.7xl) + 60px)
 }
 .will-change-top {
   will-change: top, opacity;

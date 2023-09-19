@@ -13,8 +13,8 @@ export const metadata = {
 const generalPlans = [
   {
     name: "Retainer",
-    description: "Recommened for critical changes with a short deadline.",
-    benefits: ["Respond within 15 minutes*", "Higher priority"],
+    description: "Recommened for urgent changes with a short deadline.",
+    benefits: ["Respond within 15 minutes*", "Limited to 5 critical changes a month"],
     fees: [""],
     price: 100,
     subscription: true,
@@ -22,7 +22,7 @@ const generalPlans = [
   },
   {
     name: "Enterprise",
-    description: "Lorem ipsum.",
+    description: "Need more time .",
     benefits: [
       "Respond within 15 minutes*",
       "Work on critical/urgent problems",
@@ -55,12 +55,13 @@ const websiteDevelopment = [
   {
     name: "SPA",
     description:
-      "Many business do not need a complex website. Some simply do not require a website at-all to operate. Contact me to consult on your IT needs.",
+      "Ideal for small businesses who are just getting started. Some businesses do not require a website at-all to operate.",
     benefits: [
       "Mobile-first responsive website",
       "5 sections*",
       "Domain for 2 years",
       "Hosting for 2 years",
+      "CDN",
     ],
     fees: [""],
     price: 799,
@@ -68,7 +69,7 @@ const websiteDevelopment = [
   },
   {
     name: "Custom",
-    description: "Do not see an offering that fits your needs? Send a message",
+    description: "Do not see a website development plan that fits your needs? Send a message",
     benefits: [
       "Mobile-first responsive website",
       "Unlimited sections",
@@ -78,6 +79,8 @@ const websiteDevelopment = [
     actionText: "Learn more",
   },
 ];
+
+const websiteMaintenance = []
 
 const hostingSetupServices = [
   {
@@ -156,7 +159,7 @@ const managedHosting = [
 const bundles = [];
 
 const ServicePlanCard = (plan, i) => (
-  <div className="ring-1 ring-gray-200 rounded-3xl p-8" key={i}>
+  <div className="ring-1 ring-gray-200 dark:ring-gray-700 group dark:hover:ring-yellow-200 rounded-3xl p-8" key={i}>
     <h2
       id="tier-hobby"
       className="text-gray-900 dark:text-gray-300 text-lg font-semibold leading-8"
@@ -198,7 +201,7 @@ const ServicePlanCard = (plan, i) => (
     <a
       href="#"
       aria-describedby="tier-hobby"
-      className="text-gray-600 dark:text-black dark:bg-yellow-200 dark:hover:bg-yellow-300 dark:hover:ring-yellow-300 ring-1 ring-outset ring-gray-200 hover:ring-indigo-300 dark:hover:ring-yellow-200 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline-none"
+      className="text-gray-600 dark:text-black dark:bg-gradient-to-bl dark:from-gray-700 dark:to-gray-800 dark:hover:bg-gray-500 dark:hover:ring-yellow-300 dark:text-white hover:text-amber-400 dark:hover:text-yellow-300 ring-1 ring-outset ring-gray-600 hover:ring-amber-300 dark:hover:ring-yellow-200 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline-none"
     >
       {plan.actionText}
     </a>
@@ -233,7 +236,7 @@ const Card = (card) => (
     {(card.descriptions || []).map((description) => (
       <p>{description}</p>
     ))}
-    <button className="bg-green-600 hover:bg-green-500 text-white p-4 rounded-xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
+    <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
       {card.callToAction}
     </button>
   </div>
@@ -243,24 +246,29 @@ export default function Pricing({ params }) {
   return (
     <>
       <div className="container mx-auto mb-20">
-        <div className="row grid grid-cols-4 gap-4 mt-8">
-          <div className="col-span-4 md:col-span-3 md:order-2">
+        <div className="row grid md:grid-cols-9 gap-4 mt-8">
+          <div className="col-span-4 md:col-span-9 md:order-2">
             <div className="mt-6">
-              <span className="block text-green-700 dark:text-green-500 font-bold text-3xl leading-8 mb-6">
-                Stop wasting your time and excel at your speciality.
-              </span>
+              <div className="flex items-center h-full py-16">
+                <div className="max-w-2xl">
+                  <span className="block text-green-700 dark:text-green-500 font-bold text-4xl leading-8 mb-6">
+                    Stop wasting your time. Excel at your speciality.
+                  </span>
+                  <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mb-8 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
+                    Get Started
+                  </button>
+                </div>
+              </div>
               <div className="flex flex-row gap-4 items-center mb-4">
-                <h1 className="font-bold text-3xl mb-0">Pricing</h1>
+                <h1 className="font-bold text-4xl mb-0">Pricing</h1>
               </div>
               <p className="text-lg leading-8">
-                I am a one-stop development freelancer who aim's to cover
-                majority of your web it needs, from websites to managed server
+                Your one-stop development freelancer. I provided services rangning from website development to managed server
                 infrastructure.
               </p>
               <h2 className="font-bold text-2xl mt-16">Retainers</h2>
               <p className="text-lg leading-8 mt-4 mb-10">
-                Are you looking to urgently deploy your project or need urgent
-                response times in the future such as support? I offer retainers
+                Whether your business needs critical/urgent changes or response times, I offer retainers
                 for expedited services.
               </p>
               <div className="grid grid-cols-2 gap-6 mt-4">
@@ -268,9 +276,7 @@ export default function Pricing({ params }) {
               </div>
               <h2 className="font-bold text-2xl mt-16">Consultation</h2>
               <p className="text-lg leading-8 mt-4 mb-10">
-                Are you not sure on what you need to do, or what's ideal for
-                your business needs? I offer consultation service to determine
-                whether a website is the right for your business.
+                Do you have a business idea and are unsure about what you need to do next? Are you wondering whether a website is the right choice, or do you already have a website and are uncertain if a new one would be the right-call? I offer consultation services to help you determine whether a website is right for your business.
               </p>
               <div className="grid grid-cols-2 gap-6 mt-6">
                 {consultationPlans.map(ServicePlanCard)}
@@ -284,21 +290,23 @@ export default function Pricing({ params }) {
                 <p className="mt-2">
                   Contact me for help if you need to setup a consultation.
                 </p>
-                <button className="bg-green-600 hover:bg-green-500 text-white p-4 rounded-2xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
+                <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-2xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
                   Calculate
                 </button>
               </div>
-              <h2 className="font-bold text-xl -mb-2 mt-4 dark:text-green-500 mt-16">
-                Bundles
-              </h2>
-              <h3 className="font-bold text-2xl my-4">
-                Website Development & Hosting
-              </h3>
-              <p>Save more by bundling on my service offerings.</p>
+              <div className="my-16">
+                <h2 className="font-bold text-xl -mb-2 mt-4 dark:text-green-500 mt-16">
+                  Bundles
+                </h2>
+                <h3 className="font-bold text-4xl my-4 font-bold">
+                  Website Development & Hosting
+                </h3>
+                <div className="-mt-4 text-2xl text-2xl font-bold">Save more by bundling.</div>
+              </div>
               <h2 className="font-bold text-xl -mb-2 mt-4 dark:text-green-500 mt-16">
                 Websites
               </h2>
-              <h3 className="font-bold text-2xl my-4">Development</h3>
+              <h3 className="font-bold text-3xl my-4 mt-1">Development</h3>
               <p className="text-lg leading-8 mt-4 mb-10">
                 Wide-range of services offered, from simple one-page websites to
                 complex websites with niche needs. Websites are developed with
@@ -307,7 +315,7 @@ export default function Pricing({ params }) {
               <div className="grid grid-cols-2 gap-6 mt-4">
                 {websiteDevelopment.map(ServicePlanCard)}
               </div>
-              <Card
+              {/* <Card
                 title={"Updates & Patches"}
                 descriptions={[
                   "Is your website down because you were updating your plugins and are not a techinical person? Are you looking to either fix or build, your current website, or both?",
@@ -316,8 +324,8 @@ export default function Pricing({ params }) {
                 // build on top of existing website
                 // incrementally replace old bits of the website with new updated w/ nearly 0 downtime.
                 callToAction={"Contact"}
-              />
-              <h3 className="font-bold text-2xl my-4 mt-16">Hosting Setup</h3>
+              /> */}
+              <h3 className="font-bold text-3xl my-4 mt-16">Hosting Setup</h3>
               <p className="font-bold text-xl -mt-4 mb-4 dark:text-green-500">
                 One-time service
               </p>
@@ -330,6 +338,7 @@ export default function Pricing({ params }) {
               <div className="grid grid-cols-2 gap-6 mt-4">
                 {hostingSetupServices.map(ServicePlanCard)}
               </div>
+
               {/* <h3 className="font-bold text-2xl my-4">Managed Hosting</h3>
               <p className="my-4">
                 I also offer managed hosting services to complement your web
@@ -339,42 +348,47 @@ export default function Pricing({ params }) {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 {managedHosting.map(ServicePlanCard)}
               </div> */}
-              <p className="text-lg leading-8 my-12">
-                Do not see an option that works for you? Feel free to send me a
-                message below.
-              </p>
-              <h2 className="text-2xl font-bold mt-16 mb-6">
-                Frequently Asked Questions
-              </h2>
-              <ul className="mb-16">
-                {[
-                  [
-                    "Do You Offer SEO (Search Engine Optimization)?",
-                    "No, I do not offer SEO even though websites I build include technical SEO optimizations.",
-                  ],
-                  [
-                    "Do You Offer Marketing?",
-                    "No, I do not offer marketing services because that is not my speciality.",
-                  ],
-                  [
-                    "Can I build on top of my current website?",
-                    "Yes, it's possible to merge two different website together under one domain name.",
-                  ],
-                ].map(([question, answer], i) => (
-                  <li key={i}>
-                    <h4 className="text-lg font-bold">{question}</h4>
-                    <p className="text-lg leading-8 mb-3">{answer}</p>
-                  </li>
-                ))}
-              </ul>
+              <div className="flex flex-col gap-2">
+                <h2 className="text-2xl font-bold mt-16 mb-6">
+                  Frequently Asked Questions
+                </h2>
+                <ul className="mb-16">
+                  {[
+                    [
+                      "Do You Offer SEO (Search Engine Optimization)?",
+                      "No, I do not offer SEO even though websites I build include technical SEO optimizations.",
+                    ],
+                    [
+                      "Do You Offer Marketing?",
+                      "No, I do not offer marketing services because that is not my speciality.",
+                    ],
+                    [
+                      "Can I build on top of my current website?",
+                      "Yes, it's possible to merge two different website together under one domain name.",
+                    ],
+                  ].map(([question, answer], i) => (
+                    <li key={i}>
+                      <h4 className="text-lg font-bold">{question}</h4>
+                      <p className="text-lg leading-8 mb-3">{answer}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className="mb-16">
-                <h2 className="text-2xl font-bold mb-6">Testimonials</h2>
+                <h2 className="text-2xl font-bold mb-6">Reviews</h2>
                 {reviews.map(Review)}
               </div>
-              <Contact title="Have any more questions you would like to get answered?" />
+              <div className="my-16">
+                <h2 className="text-3xl font-bold">Partnership Inquiries</h2>
+                <div className="mt-2">Are you a designer or marketer, and need a software developer to partner up with?</div>
+                <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mb-8 inline-block focus:ring-4 focus:ring-yellow-200 outline-none mt-6">Get started</button>
+              </div>
+              <div className="max-w-2xl pr-11">
+                <Contact title="Have any more questions you would like to get answered?" />
+              </div>
             </div>
           </div>
-          <Sidebar />
+          {/* <Sidebar /> */}
         </div>
       </div>
     </>

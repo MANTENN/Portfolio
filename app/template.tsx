@@ -10,7 +10,6 @@ export default function Template({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("rest", rest);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const nprogressTimer: any = useRef();

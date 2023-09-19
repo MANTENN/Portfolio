@@ -38,6 +38,7 @@ const POST_QUERY = gql`
 export async function generateMetadata({ params, searchParams }, parent?) {
   const { slug } = params;
   const data = await getBlogPost({ slug });
+  console.log('data', data)
   return { title: data.title + " by Nazar Maksymchuk" };
 }
 
@@ -66,16 +67,17 @@ async function getBlogPost({ slug }) {
     return curDir + "/" + folder;
   }
 
-  const docsDirectory = join(process.cwd(), "docs");
+  console.log("process.cwd()", process.cwd())
+  const markdownDocsDirectory = join(process.cwd(), (process.env.NODE_ENV === 'production' ? "" : "public/") + "docs");
   const fs = await import("fs");
-
-  const fullPath = join(docsDirectory, `${slug}.mdx`);
+  console.log('fs', await fs.readdirSync(join(process.cwd(), '.next')))
+  const fullPath = join(markdownDocsDirectory, `${slug}.mdx`);
   try {
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const markdownFileContents = fs.readFileSync(fullPath, "utf8");
 
     const { data: markdownMetaData, content: markdownContent } =
-      matter(fileContents);
-
+      matter(markdownFileContents);
+    console.log('markdownContent', markdownContent)
     const serializedLocalMarkdownContent: any = await compileMDX({
       source: markdownContent,
       options: {
@@ -105,6 +107,7 @@ async function getBlogPost({ slug }) {
       body: serializedLocalMarkdownContent.content,
     };
   } catch (e) {
+    console.log('ERROR', e)
     if (e.code !== "ENOENT") {
       console.log("[error]: ", e);
       return {
@@ -122,16 +125,16 @@ async function getBlogPost({ slug }) {
 
   const { result: contentfulBody } = (contentfulBlogPost || {}).body
     ? unified()
-        .use(parse)
-        .use(remark2react, {
-          remarkReactComponents: {
-            h2: H2,
-            p: Paragraph,
-            pre: Pre,
-            Steps: Steps,
-          },
-        })
-        .processSync(contentfulBlogPost.body)
+      .use(parse)
+      .use(remark2react, {
+        remarkReactComponents: {
+          h2: H2,
+          p: Paragraph,
+          pre: Pre,
+          Steps: Steps,
+        },
+      })
+      .processSync(contentfulBlogPost.body)
     : { result: "" };
 
   return {
@@ -142,7 +145,7 @@ async function getBlogPost({ slug }) {
 
 export default async function Page({ params }) {
   const { title, publishDate, body } = await getBlogPost({ slug: params.slug });
-
+  console.log('body', body)
   return (
     <>
       <Head>
@@ -166,7 +169,7 @@ export default async function Page({ params }) {
               <span className="text-xl font-bold mb-3 text-gray-700 dark:text-gray-400">
                 {publishDate &&
                   "Published on " +
-                    format(new Date(publishDate), "dddd MMMM Do, YYYY")}
+                  format(new Date(publishDate), "dddd MMMM Do, YYYY")}
               </span>
             </div>
             {body && (
