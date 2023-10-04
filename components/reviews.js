@@ -23,7 +23,7 @@ export const Review = (review) => (
             href="https://www.fiverr.com/nmaksymchuk"
             target="_blank"
             className="inline-flex gap-2 hover:bg-yellow-200 dark:hover:text-black"
-            rel="nofollow noreferrer noopener"
+            rel="ugc nofollow noreferrer noopener"
           >
             Fiverr{" "}
             <ShareIcon

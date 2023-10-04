@@ -28,7 +28,7 @@ export const IconLink = ({
       href={href}
       target="_blank"
       className={className}
-      rel="nofollow noreferrer noopener"
+      rel="ugc nofollow noreferrer noopener"
       alt={alt}
       title={title || alt}
     >
