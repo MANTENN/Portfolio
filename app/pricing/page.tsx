@@ -271,14 +271,14 @@ export default function Pricing({ params }) {
                 Whether your business needs critical/urgent changes or response times, I offer retainers
                 for expedited services.
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-4">
+              <div className="grid sm:grid-cols-2 gap-6 mt-4">
                 {generalPlans.map(ServicePlanCard)}
               </div>
               <h2 className="font-bold text-2xl mt-16">Consultation</h2>
               <p className="text-lg leading-8 mt-4 mb-10">
                 Do you have a business idea and are unsure about what you need to do next? Are you wondering whether a website is the right choice, or do you already have a website and are uncertain if a new one would be the right-call? I offer consultation services to help you determine whether a website is right for your business.
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-6">
+              <div className="grid sm:grid-cols-2 gap-6 mt-6">
                 {consultationPlans.map(ServicePlanCard)}
               </div>
               <div className="border-gray-200 border border-solid rounded-3xl p-6 my-4 hidden">
@@ -312,7 +312,7 @@ export default function Pricing({ params }) {
                 complex websites with niche needs. Websites are developed with
                 open-source technologies—no vendor lock-ins.
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-4">
+              <div className="grid sm:grid-cols-2 gap-6 mt-4">
                 {websiteDevelopment.map(ServicePlanCard)}
               </div>
               {/* <Card
@@ -335,7 +335,7 @@ export default function Pricing({ params }) {
                 make the right business decision to that fits your needs the
                 best.
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-4">
+              <div className="grid sm:grid-cols-2 gap-6 mt-4">
                 {hostingSetupServices.map(ServicePlanCard)}
               </div>
 
