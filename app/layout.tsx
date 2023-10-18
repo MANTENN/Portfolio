@@ -10,7 +10,7 @@ import "../styles/globals.css";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
+      <body className="p-4 2xl:p-0 bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
         <ThemeProvider attribute="class">
           <ApolloClientProvider>
             <NProgressBar

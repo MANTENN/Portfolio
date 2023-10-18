@@ -73,7 +73,7 @@ export default async function Page() {
     <>
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-9 gap-4 mt-8">
-          <div className="col-span-4 md:col-span-5 md:order-2">
+          <div className="col-span-9 md:col-span-5 md:order-2">
             <h2 className="text-xl font-bold mb-3">
               Posts<span className="text-base"> | Articles</span>
             </h2>

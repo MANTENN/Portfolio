@@ -42,13 +42,13 @@ export const Header = () => {
 
   return (
     <header className="sticky top-4 bg-white bg-opacity-70 backdrop-filter backdrop-blur-md dark:bg-gray-800 shadow-xs border border-solid border-white border-opacity-10 rounded-2xl container padded-container mx-auto z-10">
-      <div className="container mx-auto block py-4 grid grid-cols-4 gap-4 items-center">
+      <div className="container mx-auto block py-4 px-4 2xl:px-0 grid grid-cols-4 gap-4 items-center">
         <h1 className="block col-span-1 md:col-span-1 text-2xl font-bold">
           <Link
             href="/"
             className="hover:bg-yellow-200 dark:hover:text-black cursor-pointer"
           >
-            N<span className="hidden md:inline-block">azar Maksymchuk</span>
+            N<span className="hidden lg:inline-block">azar Maksymchuk</span>
           </Link>
         </h1>
         <div className="hidden md:block md:col-span-2">
