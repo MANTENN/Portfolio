@@ -6,6 +6,7 @@ export const reviews = [
     country: "Netherlands",
     rating: 5,
     time: [1, "week"],
+    date: new Date("Aug 01, 2022"),
     source: 0,
   },
   {
@@ -15,6 +16,7 @@ export const reviews = [
     country: "United States",
     rating: 5,
     time: [1, "month"],
+    date: new Date("Jul 11, 2022"),
     source: 0,
   },
   {
@@ -23,6 +25,7 @@ export const reviews = [
     name: "Holly Hofer",
     rating: 5,
     time: [],
+    date: new Date("Jul 27, 2022"),
     source: 0,
   },
 ];

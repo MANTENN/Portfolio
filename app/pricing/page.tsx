@@ -374,17 +374,21 @@ export default function Pricing({ params }) {
                   ))}
                 </ul>
               </div>
-              <div className="mb-16">
-                <h2 className="text-2xl font-bold mb-6">Reviews</h2>
-                {reviews.map(Review)}
-              </div>
               <div className="my-16">
                 <h2 className="text-3xl font-bold">Partnership Inquiries</h2>
                 <div className="mt-2">Are you a designer or marketer, and need a software developer to partner up with?</div>
                 <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mb-8 inline-block focus:ring-4 focus:ring-yellow-200 outline-none mt-6">Get started</button>
               </div>
-              <div className="max-w-2xl pr-11">
-                <Contact title="Have any more questions you would like to get answered?" />
+              <div className="md:grid grid-cols-2 gap-11">
+                <div className="mb-16 md:order-2">
+                  <h2 className="text-2xl font-bold mb-6">Reviews</h2>
+                  <div className="flex flex-col gap-2">
+                    {reviews.map(Review)}
+                  </div>
+                </div>
+                <div className="max-w-2xl">
+                  <Contact title="Have any more questions you would like to get answered?" />
+                </div>
               </div>
             </div>
           </div>

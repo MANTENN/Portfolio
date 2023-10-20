@@ -28,7 +28,7 @@ const Input = forwardRef(function Input(props, ref) {
           ref={ref}
           errors={null}
           className={[
-            "border border-solid focus:border-yellow-300 px-3 py-2 rounded-lg",
+            "border border-solid focus:border-yellow-300 px-3 py-2 rounded-lg dark:bg-gray-800",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
@@ -38,7 +38,7 @@ const Input = forwardRef(function Input(props, ref) {
           ref={ref}
           errors={null}
           className={[
-            "border border-solid focus:border-yellow-300 focus:ring focus:ring-yellow-300 focus:ring-offset-2 px-3 py-2 rounded-lg",
+            "border border-solid focus:border-yellow-300 focus:ring focus:ring-yellow-300 focus:ring-offset-2 px-3 py-2 rounded-lg dark:bg-gray-800",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
@@ -140,7 +140,7 @@ export default function Contact({
           as={"textarea"}
         />
         <button
-          className="bg-black hover:bg-gray-800 border border-solid border-black dark:hover:border-yellow-200 text-white px-4 py-3 rounded-2xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none  disabled:pulse-animate "
+          className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none"
           type="submit"
           disabled={!networkRequestComplete}
         >

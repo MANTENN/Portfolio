@@ -17,6 +17,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.4",
     "autoprefixer": "^10.1.0",
+    "date-fns": "^2.30.0",
     "encoding": "^0.1.13",
     "fecha": "^4.2.0",
     "graphql": "^15.4.0",
