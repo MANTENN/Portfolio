@@ -9,7 +9,7 @@ export const IconLink = ({
   ...props
 }) => {
   const className =
-    "flex w-8 p-2 h-8 items-center justify-center rounded-full hover:bg-yellow-200 dark:hover:text-yellow-600 focus:bg-yellow-200 focus:outline-green-800 focus:outline focus:outline-solid dark:hover:text-green-800 dark:focus:text-green-800 transition-all duration-300	ease-in-out";
+    `flex p-2 ${props.customDimension || "w-8 h-8"} items-center justify-center rounded-full hover:bg-yellow-200 dark:hover:text-yellow-600 focus:bg-yellow-200 focus:outline-green-800 focus:outline focus:outline-solid dark:hover:text-green-800 dark:focus:text-green-800 transition-all duration-300	ease-in-out`;
   if (onClick) {
     return (
       <button
@@ -19,7 +19,7 @@ export const IconLink = ({
         onClick={onClick}
         {...props}
       >
-        <Icon size={18} />
+        <Icon size={props.size || 18} />
       </button>
     );
   }

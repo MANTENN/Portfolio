@@ -83,7 +83,7 @@ export function Menu({ items: menu = [], socialLinks = [] }) {
                   <div className="flex col-span-3 md:col-span-1 gap-2 m-2">
                     {socialLinks}
                   </div>
-                  <IconLink className={"ml-4"} onClick={e => setMenuState(prevState => !prevState)} icon={X} />
+                  <IconLink className={"ml-4 "} customDimension="w-12 h-12" onClick={e => setMenuState(prevState => !prevState)} icon={X} size={26} />
                 </div>
               </div>
             </animated.div>

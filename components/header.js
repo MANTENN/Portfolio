@@ -75,7 +75,7 @@ export const Header = () => {
             <Suspense fallback={null}>
               <ToggleDarkAndLightModeIcon className={"ml-10"} />
               <Menu items={headerMenuLinks} socialLinks={socialLinks.map(({ href, alt, icon }) => (
-                <IconLink href={href} alt={alt} icon={icon} key={alt} />
+                <IconLink href={href} alt={alt} icon={icon} key={alt} size={26} customDimension="w-12 h-12" />
               ))} />
             </Suspense>
           </div>
