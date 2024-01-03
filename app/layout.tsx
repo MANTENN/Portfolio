@@ -22,20 +22,22 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-1EDCDHVLR7');
         `}} />
 
-      <body className="p-4 2xl:p-0 bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
-        <ThemeProvider attribute="class">
-          <ApolloClientProvider>
-            <NProgressBar
-              color="#fde68a"
-              startPosition={0.3}
-              stopDelayMs={200}
-              height={4}
-            />
-            <Header />
-            {children}
-            <Footer />
-          </ApolloClientProvider>
-        </ThemeProvider>
+      <body>
+        <div className="p-4 2xl:p-0 bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
+          <ThemeProvider attribute="class">
+            <ApolloClientProvider>
+              <NProgressBar
+                color="#fde68a"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height={4}
+              />
+              <Header />
+              {children}
+              <Footer />
+            </ApolloClientProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
