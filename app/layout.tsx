@@ -38,6 +38,7 @@ export default function RootLayout({ children }) {
             </ApolloClientProvider>
           </ThemeProvider>
         </div>
+        <Script async data-api="/_hive" src="/bee.js" />
       </body>
     </html>
   );

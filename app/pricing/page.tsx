@@ -6,6 +6,7 @@ import { Review } from "../../components/reviews";
 import { Hero } from '../../components/hero'
 import { reviews } from "../../data";
 import { CallToAction } from "../../components/hero/call-to-action";
+import { Section } from "../../components/section";
 
 export const metadata = {
   title: "Pricing | Nazar Maksymchuk",
@@ -54,18 +55,18 @@ const consultationPlans = [
 
 const websiteDevelopment = [
   {
-    name: "SPA",
+    name: "Single Page/SPA",
     description:
       "Ideal for small businesses who are just getting started. Some market segments do not need a website at-all to operate.",
     benefits: [
       "Mobile-first responsive website",
       "5 sections*",
       "Domain for 2 years",
-      "Hosting for 2 years",
+      "Static Hosting for 2 years",
       "CDN",
     ],
     fees: [""],
-    price: 799,
+    price: 399,
     actionText: "Buy",
   },
   {
@@ -244,15 +245,9 @@ export default function Pricing({ params }) {
       <div className="container mx-auto mb-20">
         <div className="row grid md:grid-cols-9 gap-4 mt-8">
           <div className="col-span-4 md:col-span-9 md:order-2">
-            <div className="mt-6">
+            <div className="mt-6 gap-16">
               <Hero />
-              <div className="flex flex-row gap-4 items-center mb-4">
-                <h1 className="font-bold text-4xl mb-0">Pricing</h1>
-              </div>
-              <p className="text-lg leading-8">
-                Your one-stop development freelancer. I provided services rangning from website development to managed server
-                infrastructure.
-              </p>
+              <Section title='Pricing' description="Your one-stop development freelancer. I provided services rangning from website development to managed server infrastructure." />
               <h2 className="font-bold text-2xl mt-16">Retainers</h2>
               <p className="text-lg leading-8 mt-4 mb-10">
                 Whether your business needs critical/urgent changes or response times, I offer retainers
