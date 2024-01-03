@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Link from "../link";
 
@@ -21,11 +21,15 @@ export function Menu({ items: menu = [], socialLinks = [] }) {
       setMenuState(false)
     }
   }, [pathname])
+  const portalRef = useRef()
+  useEffect(() => {
+    portalRef.current = document.querySelector("#menu_portal")
+  }, [])
 
   return (
     <div>
       <IconLink className={"block md:hidden ml-4"} onClick={e => setMenuState(prevState => !prevState)} icon={menuIcon} />
-      {mountTransition((styles, item, transitionObject, siblingPosition) => {
+      {portalRef.current && mountTransition((styles, item, transitionObject, siblingPosition) => {
         return createPortal(
           item && (
             <animated.div
@@ -84,7 +88,7 @@ export function Menu({ items: menu = [], socialLinks = [] }) {
               </div>
             </animated.div>
           ),
-          document.querySelector("#menu_portal")
+          portalRef.current
         )
       })}
     </div>
