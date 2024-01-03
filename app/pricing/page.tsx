@@ -56,7 +56,7 @@ const websiteDevelopment = [
   {
     name: "SPA",
     description:
-      "Ideal for small businesses who are just getting started. Some businesses do not require a website at-all to operate.",
+      "Ideal for small businesses who are just getting started. Some market segments do not need a website at-all to operate.",
     benefits: [
       "Mobile-first responsive website",
       "5 sections*",
