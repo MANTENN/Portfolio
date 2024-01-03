@@ -25,11 +25,11 @@ export function Menu({ items: menu = [], socialLinks = [] }) {
   return (
     <div>
       <IconLink className={"block md:hidden ml-4"} onClick={e => setMenuState(prevState => !prevState)} icon={menuIcon} />
-      {createPortal(mountTransition((styles, item, transitionObject, siblingPosition) => {
-        return (
+      {mountTransition((styles, item, transitionObject, siblingPosition) => {
+        return createPortal(
           item && (
             <animated.div
-              className={`fixed left-0 top-0 w-full flex flex-col flex-grow justify-self-end text-sm lg:hidden z-50 h-full overflow-auto  dark:bg-gray-800 bg-white shadow-lg py-4 h-full dark:bg-opacity-80 bg-opacity-50 backdrop-blur-md backdrop-filter`}
+              className={`fixed left-0 top-0 w-full flex flex-col flex-grow justify-self-end text-sm z-50 h-full overflow-auto  dark:bg-gray-800 bg-white shadow-lg py-4 h-full dark:bg-opacity-80 bg-opacity-50 backdrop-blur-md backdrop-filter`}
               style={styles}
             >
               <div className="fixed top-0 left-0 h-full w-full" onClick={() => setMenuState(false)} />
@@ -83,9 +83,10 @@ export function Menu({ items: menu = [], socialLinks = [] }) {
                 </div>
               </div>
             </animated.div>
-          )
-        );
-      }), document.querySelector("#menu_portal"))}
+          ),
+          document.querySelector("#menu_portal")
+        )
+      })}
     </div>
   )
 }
