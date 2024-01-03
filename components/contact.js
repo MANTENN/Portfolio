@@ -19,7 +19,7 @@ const Input = forwardRef(function Input(props, ref) {
   return (
     <div className="flex flex-col gap-1">
       <label>
-        {props.label} <span className="text-red-800">*</span>
+        {props.label} {props.required && <span className="text-red-800">*</span>}
       </label>
       {props.as == "textarea" ? (
         <textarea
@@ -113,29 +113,32 @@ export default function Contact({
           <Input
             label="First Name"
             {...register("firstName", { required: true })}
+            required="true"
             errors={errors}
           />
           <Input
             label="Last Name"
-            {...register("lastName", { required: true })}
+            {...register("lastName", { required: false })}
             errors={errors}
           />
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           <Input
             label="Email"
+            required="true"
             {...register("email", { required: true })}
             errors={errors}
           />
           <Input
             label="Phone"
+            required="true"
             {...register("phone", { required: true })}
             errors={errors}
           />
         </div>
         <Input
           label="Message"
-          {...register("message", { required: true })}
+          {...register("message", { required: false })}
           errors={errors}
           as={"textarea"}
         />

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
+    "@ariakit/react": "^0.3.12",
     "@headlessui/react": "^1.7.15",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",

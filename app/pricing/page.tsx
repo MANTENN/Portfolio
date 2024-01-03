@@ -3,8 +3,9 @@ import Head from "next/head";
 import Sidebar from "../../components/sidebar";
 import Contact from "../../components/contact";
 import { Review } from "../../components/reviews";
-
+import { Hero } from '../../components/hero'
 import { reviews } from "../../data";
+import { CallToAction } from "../../components/hero/call-to-action";
 
 export const metadata = {
   title: "Pricing | Nazar Maksymchuk",
@@ -198,13 +199,8 @@ const ServicePlanCard = (plan, i) => (
         </span>
       )}
     </p>
-    <a
-      href="#"
-      aria-describedby="tier-hobby"
-      className="text-gray-600 dark:text-black dark:bg-gradient-to-bl dark:from-gray-700 dark:to-gray-800 dark:hover:bg-gray-500 dark:hover:ring-yellow-300 dark:text-white hover:text-amber-400 dark:hover:text-yellow-300 ring-1 ring-outset ring-gray-600 hover:ring-amber-300 dark:hover:ring-yellow-200 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline-none"
-    >
-      {plan.actionText}
-    </a>
+    <CallToAction event={plan.actionText} text={plan.actionText} className="text-gray-600 dark:text-black dark:bg-gradient-to-bl dark:from-gray-700 dark:to-gray-800 dark:hover:bg-gray-500 dark:hover:ring-yellow-300 dark:text-white hover:text-amber-400 dark:hover:text-yellow-300 ring-1 ring-outset ring-gray-600 hover:ring-amber-300 dark:hover:ring-yellow-200 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline-none px-6 w-full md:w-auto"
+    />
     <ul
       role="list"
       className="mt-8 space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-300"
@@ -249,16 +245,7 @@ export default function Pricing({ params }) {
         <div className="row grid md:grid-cols-9 gap-4 mt-8">
           <div className="col-span-4 md:col-span-9 md:order-2">
             <div className="mt-6">
-              <div className="flex items-center h-full py-16">
-                <div className="max-w-2xl">
-                  <span className="block text-green-700 dark:text-green-500 font-bold text-4xl leading-8 mb-6">
-                    Stop wasting your time. Excel at your speciality.
-                  </span>
-                  <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mb-8 inline-block focus:ring-4 focus:ring-yellow-200 outline-none">
-                    Get Started
-                  </button>
-                </div>
-              </div>
+              <Hero />
               <div className="flex flex-row gap-4 items-center mb-4">
                 <h1 className="font-bold text-4xl mb-0">Pricing</h1>
               </div>
@@ -376,8 +363,8 @@ export default function Pricing({ params }) {
               </div>
               <div className="my-16">
                 <h2 className="text-3xl font-bold">Partnership Inquiries</h2>
-                <div className="mt-2">Are you a designer or marketer, and need a software developer to partner up with?</div>
-                <button className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mb-8 inline-block focus:ring-4 focus:ring-yellow-200 outline-none mt-6">Get started</button>
+                <div className="mt-2 mb-6">Are you a designer or marketer, and need a software developer to partner up with?</div>
+                <CallToAction event="partnership" />
               </div>
               <div className="md:grid grid-cols-2 gap-11">
                 <div className="mb-16 md:order-2">
