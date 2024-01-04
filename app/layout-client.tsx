@@ -4,12 +4,12 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useEffect } from "react";
 
 import { usePathname } from "next/navigation";
-import { fbq } from "react-facebook-pixel";
 
 export default function ThemeProvider({ children, ...props }) {
   const pathname = usePathname()
   useEffect(() => {
     try {
+      // @ts-ignore
       fbq('track', 'PageView');
     } catch (e) {
       console.log('facebook pixel tracker blocked')
