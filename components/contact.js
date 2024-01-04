@@ -79,7 +79,7 @@ export default function Contact({
         const { success } = data;
         if (success) {
           try {
-            fbq('track', 'contact');
+            fbq('track', 'Contact');
           } catch (e) {
             console.log('facebook pixel tracker blocked')
           }
