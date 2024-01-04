@@ -78,9 +78,18 @@ export default function Contact({
       .then((data) => {
         const { success } = data;
         if (success) {
+          try {
+            fbq('track', 'PageView');
+          } catch (e) {
+            console.log('facebook pixel tracker blocked')
+          }
           setFormSubmissionStatus(true);
-          router.push({ pathname: "/success" });
-          splitbee.track("Lead Captured", { email: values.email });
+          router.push("/success");
+          try {
+            splitbee.track("Lead Captured", { email: values.email });
+          } catch (e) {
+            console.log('analytics event log failed')
+          }
         }
         updateRequestStatus(true);
         return false;
@@ -88,7 +97,7 @@ export default function Contact({
       .catch((e) => {
         // display error to get rid of false positive
         setFormSubmissionStatus(true);
-        router.push({ pathname: "/success" });
+        router.push("/success");
         console.log(e);
         splitbee.track("Lead Capture Failure", {
           email: values.email,

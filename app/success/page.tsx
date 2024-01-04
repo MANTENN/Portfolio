@@ -40,7 +40,7 @@ export default function Thanks({ params }) {
               <div className="flex flex-col gap-1">
                 <p>
                   I received your message. If your inquiry is urgent, please
-                  text (916-741-0697) and mention id# to expedite your request.
+                  text (279-218-0833) and mention id# to expedite your request.
                 </p>
                 <p>Otherwise, I will reply by email as soon as possible.</p>
                 <p className="mt-3">

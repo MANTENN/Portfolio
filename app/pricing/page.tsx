@@ -342,7 +342,7 @@ export default function Pricing({ params }) {
                     ],
                     [
                       "What is the difference between SEO and technical SEO?",
-                      "SEO is a broad term that covers technical SEO, on-page, and off-page. Technical SEO involves marking up pages with and makes it easier for search enginges to extract certain information such as title, metatags, scrapping, etc.",
+                      "SEO is a broad term that covers technical, on-page, and off-page. Technical SEO involves marking up pages with and makes it easier for search enginges to extract certain information such as title, metatags, scrapping, etc. and is a subset of SEO on-page optimization.",
                     ],
                     [
                       "Do You Offer Marketing?",
