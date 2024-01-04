@@ -341,6 +341,10 @@ export default function Pricing({ params }) {
                       "No, I do not offer SEO even though websites I build include technical SEO optimizations.",
                     ],
                     [
+                      "What is the difference between SEO and technical SEO?",
+                      "SEO is a broad term that covers technical SEO, on-page, and off-page. Technical SEO involves marking up pages with and makes it easier for search enginges to extract certain information such as title, metatags, scrapping, etc.",
+                    ],
+                    [
                       "Do You Offer Marketing?",
                       "No, I do not offer marketing services because that is not my speciality.",
                     ],
