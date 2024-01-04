@@ -39,6 +39,11 @@ export default function RootLayout({ children }) {
           </ThemeProvider>
         </div>
         <Script async data-api="/_hive" src="/bee.js" />
+        <noscript>
+          <img height="1" width="1"
+            src="https://www.facebook.com/tr?id=1089428102065216&ev=PageView
+&noscript=1"/>
+        </noscript>
       </body>
     </html>
   );
