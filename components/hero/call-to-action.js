@@ -17,7 +17,7 @@ export function CallToAction({ event = "get-started", text = "Get Started", clas
         className="fixed z-[10000] top-0 left-0 items-center justify-center w-full h-full overflow-auto bg-black dark:bg-white dark:bg-opacity-10 bg-opacity-50 backdrop-blur-md backdrop-filter"
       >
         <Ariakit.Button onClick={() => setOpen(false)} className="fixed bg-white bg-opacity-30 w-full h-full" />
-        <div className="relative flex flex-col bg-gray-800 bg-opacity-80 text-white rounded-2xl p-8 shadow-md z-1 rounded-tl-none rounded-tr-none md:m-10  max-w-xl justify-self-center">
+        <div className="relative flex flex-col bg-gray-800 bg-opacity-80 text-white rounded-2xl p-8 shadow-md z-1 rounded-tl-none rounded-tr-none md:rounded-t-2xl md:m-10  max-w-xl justify-self-center">
           <Ariakit.DialogHeading className="text-2xl font-bold">
             Enter your contact details
           </Ariakit.DialogHeading>
