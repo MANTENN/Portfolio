@@ -66,7 +66,7 @@ const websiteDevelopment = [
       "CDN",
     ],
     fees: [""],
-    price: 399,
+    price: 799,
     actionText: "Buy",
   },
   {
