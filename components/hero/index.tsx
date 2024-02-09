@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { CallToAction } from "./call-to-action";
 
-export function Hero({ hook = "Stop wasting your time. Excel at your speciality.", description = null }: { hook: String; description: string | ReactNode }) {
+export function Hero({ hook = "Stop wasting your time. Excel at your speciality.", description = null }: { hook?: String; description?: string | ReactNode }) {
   return (
     <div className="flex items-center h-full">
       <div className="max-w-2xl grid gap-8">
