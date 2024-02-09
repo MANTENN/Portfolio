@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
 import Sidebar from "../../components/sidebar";
-import Contact from "../../components/contact";
+import Contact from "../../components/Contact";
 import { Review } from "../../components/reviews";
 import { Hero } from '../../components/hero'
 import { reviews } from "../../data";

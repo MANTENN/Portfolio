@@ -7,7 +7,7 @@ import remark2react from "remark-react";
 
 import { fetcher } from "../../lib/graphqlUtils";
 import Sidebar from "../../components/sidebar";
-import Contact from "../../components/contact";
+import Contact from "../../components/Contact";
 
 const PORTFOLIO_QUERY = gql`
   query Portfolio {

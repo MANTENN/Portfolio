@@ -1,5 +1,5 @@
 import { Process } from "@/components/process";
-import Contact from "../../components/contact";
+import Contact from "../../components/Contact";
 import { H2 } from "../../components/headings";
 import { Hero } from "../../components/hero";
 import { Section } from "../../components/section";
