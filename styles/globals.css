@@ -33,3 +33,50 @@ a {
 .contents a {
   @apply text-blue-600;
 }
+
+.backdrop {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.backdrop[data-enter] {
+  opacity: 1;
+}
+
+.dialog {
+  transform: scale(0.95);
+  transition: transform 200ms;
+}
+
+.dialog {
+  position: fixed;
+  inset: 0.75rem;
+  z-index: 50;
+  margin: auto;
+  display: flex;
+  height: fit-content;
+  max-height: calc(100dvh - 2 * 0.75rem);
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+  border-radius: 1rem;
+  background-color: hsl(204 20% 100%);
+  padding: 2.75rem;
+  color: hsl(204 10% 10%);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+@media (min-width: 640px) {
+  .dialog {
+    top: 10vh;
+    bottom: 10vh;
+    margin-top: 0px;
+    max-height: 80vh;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+.dialog[data-enter] {
+  transform: scale(1);
+}

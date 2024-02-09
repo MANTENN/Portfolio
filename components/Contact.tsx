@@ -1,11 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useRef, useState, forwardRef } from "react";
+import { useRef, useState, forwardRef, ReactElement, ForwardedRef, LegacyRef } from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "./Button";
 
 const QUOTE_ENDPOINT = "https://usebasin.com/f/fb3436a29ba5";
 
-const Input = forwardRef(function Input(props, ref) {
+const Input = forwardRef(function Input<T>(props: { errors: any | null, required?: boolean, label: string | ReactElement, as?: string, name: string }, ref: any) {
   const errorHelper = (field_name) =>
     props.errors[field_name] && (
       <span className="block mt-1 font-bold text-xs text-red-700">
@@ -24,21 +25,21 @@ const Input = forwardRef(function Input(props, ref) {
       {props.as == "textarea" ? (
         <textarea
           {...props}
-          rows="6"
+          rows={6}
+          // @ts-ignore
           ref={ref}
-          errors={null}
           className={[
-            "border border-solid focus:border-yellow-300 px-3 py-2 rounded-lg dark:bg-gray-800",
+            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset-0 px-3 py-2 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
       ) : (
         <input
           {...props}
+          // @ts-ignore
           ref={ref}
-          errors={null}
           className={[
-            "border border-solid focus:border-yellow-300 focus:ring focus:ring-yellow-300 focus:ring-offset-2 px-3 py-2 rounded-lg dark:bg-gray-800",
+            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset- px-3 py-2 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
@@ -65,6 +66,7 @@ export default function Contact({
   const [networkRequestComplete, updateRequestStatus] = useState(true);
 
   function onSubmit(values) {
+    updateRequestStatus(false)
     fetch(QUOTE_ENDPOINT, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       credentials: "same-origin", // include, *same-origin, omit
@@ -79,6 +81,7 @@ export default function Contact({
         const { success } = data;
         if (success) {
           try {
+            // @ts-ignore
             fbq('track', 'Contact');
           } catch (e) {
             console.log('facebook pixel tracker blocked')
@@ -86,6 +89,7 @@ export default function Contact({
           setFormSubmissionStatus(true);
           router.push("/success");
           try {
+            // @ts-ignore
             splitbee.track("Lead Captured", { email: values.email });
           } catch (e) {
             console.log('analytics event log failed')
@@ -99,6 +103,7 @@ export default function Contact({
         setFormSubmissionStatus(true);
         router.push("/success");
         console.log(e);
+        // @ts-ignore
         splitbee.track("Lead Capture Failure", {
           email: values.email,
           error: e,
@@ -116,13 +121,14 @@ export default function Contact({
         onSubmit={handleSubmit(onSubmit)}
         action={QUOTE_ENDPOINT}
         method="POST"
+        // @ts-ignore
         ref={formRef}
       >
         <div className="grid md:grid-cols-2 gap-4">
           <Input
             label="First Name"
             {...register("firstName", { required: true })}
-            required="true"
+            required={true}
             errors={errors}
           />
           <Input
@@ -134,13 +140,13 @@ export default function Contact({
         <div className="grid md:grid-cols-2 gap-4">
           <Input
             label="Email"
-            required="true"
+            required={true}
             {...register("email", { required: true })}
             errors={errors}
           />
           <Input
             label="Phone"
-            required="true"
+            required={true}
             {...register("phone", { required: true })}
             errors={errors}
           />
@@ -151,18 +157,12 @@ export default function Contact({
           errors={errors}
           as={"textarea"}
         />
-        <button
-          className="bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl mt-4 inline-block focus:ring-4 focus:ring-yellow-200 outline-none"
+        <Button
           type="submit"
-          disabled={!networkRequestComplete}
+          spinner={networkRequestComplete === false}
         >
           Send
-        </button>
-        {formSubmissionStatus && (
-          <p className="bg-blue-600 text-blue p-4 mt-4 m-1 rounded-xl">
-            Your message has been received. I will reach out to you shortly.
-          </p>
-        )}
+        </Button>
       </form>
     </div>
   );

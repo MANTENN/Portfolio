@@ -1,6 +1,6 @@
-import { H2 } from "../../../../components/headings";
-import { Hero } from "../../../../components/hero";
-import { Section } from "../../../../components/section";
+import { H2 } from "../../../components/headings";
+import { Hero } from "../../../components/hero";
+import { Section } from "../../../components/section";
 
 export default function BugFixes({ params }) {
   return (

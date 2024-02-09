@@ -246,7 +246,9 @@ export default function Pricing({ params }) {
         <div className="row grid md:grid-cols-9 gap-4 mt-8">
           <div className="col-span-4 md:col-span-9 md:order-2">
             <div className="mt-6 gap-16">
-              <Hero />
+              <div className="py-16">
+                <Hero />
+              </div>
               <Section title='Pricing' description="Your one-stop development freelancer. I provided services rangning from website development to managed server infrastructure." />
               <h2 className="font-bold text-2xl mt-16">Retainers</h2>
               <p className="text-lg leading-8 mt-4 mb-10">
