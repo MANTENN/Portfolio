@@ -1,10 +1,7 @@
 import { Process } from "@/components/process";
-import Contact from "../../components/Contact";
-import { H2 } from "../../components/headings";
-import { Hero } from "../../components/hero";
-import { Section } from "../../components/section";
+import Contact from "@/components/Contact";
+import { Hero } from "@/components/hero";
 import { Customers } from "@/components/Customers";
-import { ComplementaryServices } from "@/components/ComplementaryServices";
 import { FrequentlyAskedQuestions } from "@/components/FrequentlyAskedQuestions";
 import Image from "next/image";
 import { Feedback } from "@/components/Feedback";

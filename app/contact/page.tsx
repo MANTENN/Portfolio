@@ -1,9 +1,9 @@
 import Head from "next/head";
 
-import { default as ContactForm } from "../../components/contact";
-import Sidebar from "../../components/sidebar";
-import { reviews } from "../../data";
-import { Review } from "../../components/reviews";
+import { default as ContactForm } from "@/components/Contact";
+import Sidebar from "@/components/sidebar";
+import { reviews } from "@/data/index";
+import { Review } from "@/components/reviews";
 
 export const metadata = {
   title: "Contact Nazar Maksymchuk",
