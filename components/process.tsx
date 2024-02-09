@@ -7,8 +7,8 @@ const stages = [
     description: 'I work with you on what type of website you need and gather the project requirements in this stage.'
   },
   {
-    name: 'Prototype',
-    description: 'After four wireframe cycles, I work on the prototype and add some drip to the website. '
+    name: 'Development',
+    description: 'After five development cycles, I work on the prototype and add some drip to the website. '
   },
   {
     name: 'Production',
