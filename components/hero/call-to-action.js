@@ -1,7 +1,7 @@
 'use client'
 import * as Ariakit from "@ariakit/react";
 import { useDialogStore } from "@ariakit/react";
-import Contact from "../contact";
+import Contact from "../Contact";
 
 export function CallToAction({ event = "get-started", text = "Get Started", className = "bg-green-600 hover:bg-green-500 text-white px-4 py-3 rounded-xl inline-block focus:ring-4 focus:ring-yellow-200 outline-none transition-all duration-150 ease-in-out" }) {
   const dialog = useDialogStore({ animated: true });
