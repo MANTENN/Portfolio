@@ -29,7 +29,7 @@ const Input = forwardRef(function Input<T>(props: { errors: any | null, required
           // @ts-ignore
           ref={ref}
           className={[
-            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset-0 px-3 py-2 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
+            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset-0 px-3 py-3 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
@@ -39,7 +39,7 @@ const Input = forwardRef(function Input<T>(props: { errors: any | null, required
           // @ts-ignore
           ref={ref}
           className={[
-            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset- px-3 py-2 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
+            "border border-solid dark:border-opacity-20 dark:hover:border-opacity-50 focus:border-yellow-300 focus:border-opacity-50 focus:border focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:ring-offset-transparent focus:ring-offset- px-3 py-3 rounded-xl dark:bg-gray-800 transition-all duration-150 ease-in-out",
             props.errors[props.name] ? "border-red-400" : "border-gray-300 ",
           ].join(" ")}
         />
