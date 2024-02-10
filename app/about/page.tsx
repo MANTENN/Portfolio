@@ -83,7 +83,7 @@ export default async function About() {
 
       <div className="container mx-auto mb-20">
         <div className="row grid grid-cols-9 gap-4 mt-8">
-          <div className="col-span-4 md:col-span-5 md:order-2">
+          <div className="col-span-9 md:col-span-5 md:order-2">
             <h2 className="mt-4 text-xl font-bold mb-3 mt-14">Work History</h2>
             {workHistory.items.map((experience) => {
               const description: any = unified()
@@ -111,7 +111,7 @@ export default async function About() {
             })}
             <Contact />
           </div>
-          <Sidebar projects={projects} skills={skills} />
+          <Sidebar projects={projects} skills={{ items: [] }} />
         </div>
       </div>
     </>

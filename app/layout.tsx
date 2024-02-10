@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         `}} />
 
       <body>
-        <div className="p-4 2xl:p-0 bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
+        <div className="text-lg p-4 2xl:p-0 bg-white dark:bg-gray-800 dark:text-gray-300 transition-all duration-300	ease-in-out">
           <ThemeProvider attribute="class">
             <ApolloClientProvider>
               <NProgressBar

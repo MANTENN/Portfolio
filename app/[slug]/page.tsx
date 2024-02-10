@@ -16,6 +16,7 @@ import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { Steps } from "../../components/steps";
 import { H2 } from "../../components/headings";
+import { notFound } from "next/navigation";
 
 const POST_QUERY = gql`
   query post($slug: String) {
@@ -145,6 +146,9 @@ async function getBlogPost({ slug }) {
 
 export default async function Page({ params }) {
   const { title, publishDate, body } = await getBlogPost({ slug: params.slug });
+  if (title == "" || title == undefined) {
+    return notFound()
+  }
   console.log('body', body)
   return (
     <>

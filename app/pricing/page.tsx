@@ -184,10 +184,10 @@ const ServicePlanCard = (plan, i) => (
           )}
           {plan.oneTime && (
             <span className="flex flex-col">
-              <span className="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-300">
+              <span className="text-lg font-semibold leading-6 text-gray-600 dark:text-gray-300">
                 /one-time payment
               </span>
-              <span className="text-sm font-semibold leading-6 text-gray-400 dark:text-gray-500">
+              <span className="text-lg font-semibold leading-6 text-gray-400 dark:text-gray-500">
                 plus local taxes
               </span>
             </span>

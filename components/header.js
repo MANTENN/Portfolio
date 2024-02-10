@@ -9,7 +9,7 @@ import { Menu } from './menu'
 export const Header = () => {
   const headerMenuLinks = [
     { href: "posts", title: "Posts" },
-    { href: "pricing", title: "Pricing" },
+    // { href: "pricing", title: "Pricing" },
     { href: "about", title: "About" },
     { href: "contact", title: "Contact" },
   ];

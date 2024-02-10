@@ -78,16 +78,6 @@ export default async function Page() {
               Posts<span className="text-base"> | Articles</span>
             </h2>
             {posts.items.map(Article)}
-            <h2 className="text-xl font-bold mt-6 mb-3">Reviews</h2>
-            {reviews.map((review, i) => (
-              <Review key={i} i={i} {...review} />
-            ))}
-            <h3 className="text-xs font-bold mb-2">Original Review Text</h3>
-            {reviews.map((review, i) => (
-              <div key={i} className="text-xs">
-                {i}. {review.orig}
-              </div>
-            ))}
           </div>
           <Sidebar projects={projects} skills={skills} />
         </div>
